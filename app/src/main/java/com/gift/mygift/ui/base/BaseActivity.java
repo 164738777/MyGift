@@ -1,6 +1,7 @@
 package com.gift.mygift.ui.base;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
@@ -24,8 +25,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract int setContentViewId();
+
     protected abstract void initView();
-    protected void initListener(){}
+
+    protected void initListener() {
+    }
 
 
     @Override
@@ -34,6 +38,21 @@ public abstract class BaseActivity extends AppCompatActivity {
         preRelease();
     }
 
-    protected void preRelease(){}
+    protected void preRelease() {
+    }
+
+    /**
+     * 恢复标题栏
+     * @param title
+     */
+    protected void restoreActionBar(String title) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar == null) {
+            return;
+        }
+        actionBar.setTitle(title);
+        actionBar.setDisplayHomeAsUpEnabled(true);//是否显示左上角返回按钮
+        actionBar.setElevation(0);
+    }
 }
 

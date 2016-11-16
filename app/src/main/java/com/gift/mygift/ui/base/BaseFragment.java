@@ -24,13 +24,31 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        unbinder = ButterKnife.bind(this, container);
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(setContentViewId(), container, false);
+        unbinder = ButterKnife.bind(this, view);
+
+        initListener();
+        initView();
+
+        return view;
+    }
+
+    protected abstract int setContentViewId();
+
+    protected abstract void initView();
+
+    protected void initListener() {
+    }
+
+    protected void preRelease() {
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        preRelease();
+
+        if (unbinder != null)
+            unbinder.unbind();
     }
 }

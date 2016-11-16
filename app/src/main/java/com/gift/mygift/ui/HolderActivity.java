@@ -7,6 +7,7 @@ import android.os.Message;
 
 import com.gift.mygift.R;
 import com.gift.mygift.ui.base.BaseActivity;
+import com.gift.mygift.ui.home.HomeActivity;
 
 public class HolderActivity extends BaseActivity {
 
