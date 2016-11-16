@@ -45,13 +45,13 @@ public class FragmentController {
         return controller;
     }
 
-    private FragmentController(FragmentActivity activity, int containerId) {
+    public FragmentController(FragmentActivity activity, int containerId) {
         this.containerId = containerId;
         manager = activity.getSupportFragmentManager();
         initFrgList();
     }
 
-    public void onDestroy() {
+    public static void onDestroy() {
         controller = null;
     }
 
