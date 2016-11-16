@@ -35,18 +35,12 @@ buildscript {
 
 allprojects {
     repositories {
-/*        jcenter()
-        maven {
-            url "https://jitpack.io"
-        }
-        mavenCentral()
-        maven { url "http://repo1.maven.org/maven2" }*/
-
         jcenter()
         maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
         maven { url "https://jitpack.io" }
         maven { url "http://dl.bintray.com/glomadrian/maven" }
         maven { url "https://oss.sonatype.org/content/repositories/ksoap2-android-releases/" }
+//        maven { url "http://repo1.maven.org/maven2" }
         mavenCentral()
     }
 }
