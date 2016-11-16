@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MyGift</string>
+
+    <string name="home_rb_text_guide">指南</string>
+    <string name="home_rb_text_hot">热门</string>
+    <string name="home_rb_text_sort">分类</string>
+    <string name="home_rb_text_my">我的</string>
+
 </resources>

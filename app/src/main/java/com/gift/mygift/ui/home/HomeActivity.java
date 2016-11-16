@@ -12,7 +12,13 @@ public class HomeActivity extends BaseActivity {
     }
 
     @Override
+    protected void initListener() {
+
+    }
+
+    @Override
     protected void initView() {
+
 
     }
 }

@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.home.HomeActivity"
-            android:screenOrientation="portrait"/>
+            android:theme="@style/NoActionBar"
+            android:name=".ui.home.HomeActivity"/>
 
     </application>
 

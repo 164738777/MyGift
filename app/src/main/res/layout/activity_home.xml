@@ -8,12 +8,55 @@
     tools:context="com.gift.mygift.ui.home.HomeActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_home"
+        android:id="@+id/home_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
 
-
     </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/home_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#dfdfdf"/>
+
+    <RadioGroup
+        android:id="@+id/home_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingTop="@dimen/padding_screen_half"
+        android:paddingBottom="@dimen/padding_screen_half"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_guide"
+            style="@style/RadioButtonHome"
+            android:drawableTop="@drawable/slct_home_rb_guide"
+            android:text="@string/home_rb_text_guide"/>
+
+        <RadioButton
+            android:id="@+id/rb_hot"
+            style="@style/RadioButtonHome"
+            android:drawableTop="@drawable/slct_home_rb_hot"
+            android:text="@string/home_rb_text_hot"/>
+
+        <RadioButton
+            android:id="@+id/rb_sort"
+            style="@style/RadioButtonHome"
+            android:drawableTop="@drawable/slct_home_rb_sort"
+            android:text="@string/home_rb_text_sort"/>
+
+        <RadioButton
+            android:id="@+id/rb_my"
+            style="@style/RadioButtonHome"
+            android:drawableTop="@drawable/slct_home_rb_my"
+            android:text="@string/home_rb_text_sort"/>
+    </RadioGroup>
 
 </LinearLayout>
