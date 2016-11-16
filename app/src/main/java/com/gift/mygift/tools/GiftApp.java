@@ -2,6 +2,7 @@ package com.gift.mygift.tools;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
 import com.socks.library.KLog;
 
 /**
@@ -25,6 +26,9 @@ public class GiftApp extends Application {
         INSTANCE = this;
 
         KLog.init(true);
+        Stetho.initializeWithDefaults(this);//facebook的网络请求监听
+        //        MVCHelper.setLoadViewFractory(new LoadViewFactory());
+
         //        MultiDex.install(this);//65K方法数限制，解决RxJava在4.4及以下机型找不到类的异常
     }
 }

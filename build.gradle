@@ -18,7 +18,8 @@ ext {
             stetho        : "1.4.1",
             glide         : "3.7.0",
             rxCache       : "1.4.6",
-            butterknife   : "8.4.0"
+            butterknife   : "8.4.0",
+            mvchelper     : "1.0.7"
     ]
 }
 

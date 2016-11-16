@@ -59,4 +59,8 @@ dependencies {
 
     compile 'com.github.zhaokaiqiang.klog:library:1.6.0'
 
+    compile "com.shizhefei:MVCHelper-Library:${libs.mvchelper}"
+    compile 'com.shizhefei:pulltorefresh:1.0.1'
+
+
 }
