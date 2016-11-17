@@ -7,13 +7,8 @@
     android:orientation="vertical"
     tools:context="com.gift.mygift.ui.home.HomeActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/home_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-
-
-    </android.support.v7.widget.Toolbar>
+    <include
+        layout="@layout/module_home_toolbar"/>
 
     <FrameLayout
         android:id="@+id/home_container"
@@ -36,25 +31,25 @@
 
         <RadioButton
             android:id="@+id/rb_guide"
-            style="@style/RadioButtonHome"
+            style="@style/Home_radioButton"
             android:drawableTop="@drawable/slct_home_rb_guide"
             android:text="@string/home_rb_text_guide"/>
 
         <RadioButton
             android:id="@+id/rb_hot"
-            style="@style/RadioButtonHome"
+            style="@style/Home_radioButton"
             android:drawableTop="@drawable/slct_home_rb_hot"
             android:text="@string/home_rb_text_hot"/>
 
         <RadioButton
             android:id="@+id/rb_sort"
-            style="@style/RadioButtonHome"
+            style="@style/Home_radioButton"
             android:drawableTop="@drawable/slct_home_rb_sort"
             android:text="@string/home_rb_text_sort"/>
 
         <RadioButton
             android:id="@+id/rb_my"
-            style="@style/RadioButtonHome"
+            style="@style/Home_radioButton"
             android:drawableTop="@drawable/slct_home_rb_my"
             android:text="@string/home_rb_text_sort"/>
     </RadioGroup>

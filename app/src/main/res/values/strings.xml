@@ -1,12 +1,23 @@
 <resources>
     <string name="app_name">MyGift</string>
 
+    <!--首页控件-->
     <string name="home_rb_text_guide">指南</string>
     <string name="home_rb_text_hot">热门</string>
     <string name="home_rb_text_sort">分类</string>
     <string name="home_rb_text_my">我的</string>
+    <string name="home_btn_text_gongnue">攻略</string>
+    <string name="home_btn_text_gift">礼物</string>
 
+    <!--网络-->
     <string name="load_fail_api">服务器访问失败</string>
     <string name="load_fail_timeout">服务器请求超时</string>
+
+    <string name="exit_click_again">再按一次退出【礼物说】</string>
+
+    <!--通用-->
+    <string name="text_giftsay">礼物说</string>
+    <string name="text_hot">热门</string>
+
 
 </resources>

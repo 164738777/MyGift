@@ -5,6 +5,7 @@
 
     <!--通用-->
     <dimen name="padding_screen">10dp</dimen>
+    <dimen name="padding_screen_double">20dp</dimen>
     <dimen name="padding_screen_half">5dp</dimen>
     <dimen name="padding_ic">3dp</dimen>
 

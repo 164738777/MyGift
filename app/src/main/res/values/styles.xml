@@ -19,8 +19,9 @@
         <item name="android:screenOrientation">portrait</item>
     </style>
 
-    <!--首页Rb-->
-    <style name="RadioButtonHome">
+    <!--首页-->
+    <!--首页rb-->
+    <style name="Home_radioButton">
         <item name="android:background">@null</item>
         <item name="android:button">@null</item>
         <item name="android:layout_weight">1</item>
@@ -31,5 +32,13 @@
         <item name="android:textSize">@dimen/textSize_10</item>
         <item name="android:textColor">@drawable/slct_home_rb_text</item>
     </style>
+    <!--首页toolbar的btn-->
+    <style name="Home_toolbar_btn">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
 
 </resources>

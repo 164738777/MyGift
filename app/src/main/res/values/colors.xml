@@ -3,4 +3,175 @@
     <color name="colorPrimary">#ed6969</color>
     <color name="colorPrimaryDark">#da5555</color>
     <color name="colorAccent">#FF4081</color>
+
+
+
+
+
+    <!-- 常用颜色 -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#44CEF5</color>
+    <color name="orange">#FA8C35</color>
+    <color name="red">#FF4F20</color>
+    <color name="green">#00E500</color>
+    <color name="brown">#B25D26</color>
+    <color name="pink">#FFB3A6</color>
+    <color name="gray">#aaaaaa</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- 中国风颜色 -->
+    <!-- 竹青 -->
+    <color name="zhuQing">#789262</color>
+    <!-- 艾青 -->
+    <color name="aiQing">#A3E2C5</color>
+    <!-- 茶白 -->
+    <color name="chaBai">#F3F8F1</color>
+    <!-- 秋香色 -->
+    <color name="qiuXiang">#B9B612</color>
+    <!-- 黛蓝 -->
+    <color name="daiLan">#415065</color>
+    <!-- 绾色 -->
+    <color name="wanSe">#A98175</color>
+    <!-- 檀色 -->
+    <color name="tanSe">#B36D61</color>
+    <!-- 炎色，炽红 -->
+    <color name="chiHong">#FF3300</color>
+    <!-- 妃色 -->
+    <color name="feiSe">#ED5736</color>
+    <!-- 殷红色 -->
+    <color name="yinHong">#BE002E</color>
+    <!-- 品红色 -->
+    <color name="pinHong">#F00057</color>
+    <!-- 青碧色 -->
+    <color name="qingBi">#48C0A4</color>
+    <!-- 鸭黄 -->
+    <color name="yaHuang">#FAFF71</color>
+    <!-- 漆黑 -->
+    <color name="qiHei">#161824</color>
+    <!-- 乌黑 -->
+    <color name="wuHei">#3A2F40</color>
+    <!-- 枣红 -->
+    <color name="zaoHong">#C32136</color>
+    <!-- 墨灰 -->
+    <color name="moHui">#748A98</color>
+    <!-- 驼色 -->
+    <color name="tuoSe">#A88462</color>
+    <!-- 缥绿 -->
+    <color name="piaoLv">#7FEBAD</color>
+    <!-- 黛色 -->
+    <color name="daiSe">#494166</color>
+    <!-- 群青 -->
+    <color name="qunQing">#4C8DAD</color>
+    <!-- 鸦青 -->
+    <color name="yaQing">#424B50</color>
+    <!-- 嫣红 -->
+    <color name="yanHong">#EF7A82</color>
+    <!-- 月白 -->
+    <color name="yueBai">#D7ECF1</color>
+    <!-- 绿沈 -->
+    <color name="lvShen">#0D8919</color>
+    <!-- 蓝灰 -->
+    <color name="lanHui">#A1AFC9</color>
+    <!-- 藕色 -->
+    <color name="ouSe">#ECD1D8</color>
+    <!-- 青莲 -->
+    <color name="qingLian">#801DAE</color>
+    <!-- 柳黄 -->
+    <color name="liuHuang">#C9DD23</color>
+    <!-- 杏红 -->
+    <color name="xingHong">#FF8C31</color>
+    <!-- 赤金 -->
+    <color name="chiJin">#F2BE46</color>
+    <!-- 绛紫 -->
+    <color name="jiangZi">#8C4356</color>
+    <!-- 鱼肚白 -->
+    <color name="yuduBai">#FCEFE7</color>
+    <!-- 酡颜 -->
+    <color name="tuoYan">#F99070</color>
+    <!-- 紫檀 -->
+    <color name="ziTan">#4D221B</color>
+    <!-- 丁香 -->
+    <color name="dingXiang">#CCA4E3</color>
+    <!-- 紫酱 -->
+    <color name="ziJiang">#805463</color>
+    <!-- 海棠红 -->
+    <color name="haitangHong">#DB5A6C</color>
+    <!-- 水绿 -->
+    <color name="shuiLv">#D4F2E8</color>
+    <!-- 琥珀 -->
+    <color name="huPo">#CA6924</color>
+    <!-- 缃色 -->
+    <color name="xiangSe">#F0C239</color>
+    <!-- 牙色 -->
+    <color name="yaSe">#EFDEB0</color>
+    <!-- 象牙白 -->
+    <color name="xiangyaBai">#FFFBF0</color>
+    <!-- 松花色 -->
+    <color name="songHua">#BBE672</color>
+    <!-- 彤色 -->
+    <color name="tongSe">#F35436</color>
+    <!-- 青翠 -->
+    <color name="qingCui">#00E078</color>
+    <!-- 樱草色 -->
+    <color name="yingCao">#E9FF55</color>
+    <!-- 酱紫 -->
+    <color name="jiangziSe">#815475</color>
+    <!-- 石榴红 -->
+    <color name="shiliuHong">#F20C00</color>
+    <!-- 碧色 -->
+    <color name="biSe">#1CD1A6</color>
+    <!-- 缁色 -->
+    <color name="ziSe">#493131</color>
+    <!-- 石青 -->
+    <color name="shiQing">#7ACFA6</color>
+    <!-- 青白 -->
+    <color name="qingBai">#C0EBD7</color>
+    <!-- 雪白 -->
+    <color name="xueBai">#F1FCFE</color>
+    <!-- 蔚蓝 -->
+    <color name="weiLan">#70F2FF</color>
+    <!-- 湖绿 -->
+    <color name="huLv">#25F8CB</color>
+    <!-- 葱青 -->
+    <color name="congQing">#0EB83B</color>
+    <!-- 素色 -->
+    <color name="suSe">#E0EFE8</color>
+    <!-- 铜绿 -->
+    <color name="tongLv">#549688</color>
+    <!-- 橙黄 -->
+    <color name="chengHuang">#FFA401</color>
+    <!-- 绯红 -->
+    <color name="feiHong">#C83C23</color>
+    <!-- 银红 -->
+    <color name="yinhongSe">#F05654</color>
+    <!-- 嫩绿 -->
+    <color name="nenLv">#BDDD22</color>
+    <!-- 乌色 -->
+    <color name="wuSe">#725E83</color>
+    <!-- 茜色 -->
+    <color name="qianSe">#CB3A57</color>
+    <!-- 秋色 -->
+    <color name="qiuSe">#8A6C3A</color>
+    <!-- 洋红 -->
+    <color name="yangHong">#FE0096</color>
+    <!-- 胭脂 -->
+    <color name="yanZhi">#9D2932</color>
+    <!-- 朱红 -->
+    <color name="zhuHong">#FF4C01</color>
+    <!-- 鸭卵青 -->
+    <color name="yaluanQing">#DFEEE7</color>
+    <!-- 宝蓝 -->
+    <color name="baoLan">#4B5CC4</color>
+    <!-- 火红 -->
+    <color name="huoHong">#FF2D52</color>
+    <!-- 棕黄 -->
+    <color name="zongHuang">#AE7001</color>
+    <!-- 黛紫 -->
+    <color name="daiZi">#574165</color>
+    <!-- 藏蓝 -->
+    <color name="zangLan">#3B2E7E</color>
+    <!-- 黯色 -->
+    <color name="anSe">#41555C</color>
+
 </resources>
