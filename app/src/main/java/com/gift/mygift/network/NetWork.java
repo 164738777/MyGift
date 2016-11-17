@@ -1,6 +1,9 @@
 package com.gift.mygift.network;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.gift.mygift.constant.Constants;
+import com.gift.mygift.network.api.Api;
+import com.gift.mygift.network.parser.FastJsonConverterFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +25,7 @@ public class NetWork {
             //有网时使用的拦截器
             .addNetworkInterceptor(new StethoInterceptor())//调试用
             //所有情况下使用的拦截器
-            //            .addInterceptor(new UrlInterceptor())
+            .addInterceptor(new UrlInterceptor())
             /**
              * default timeout
              * connectTimeout = 10_000;
@@ -40,10 +43,31 @@ public class NetWork {
             FastJsonConverterFactory.create(),
             SimpleXmlConverterFactory.create());*/
 
+
+
     private static Retrofit.Builder getBuilder() {
         return new Retrofit.Builder()
                 .client(okHttpClient)
+                .addConverterFactory(FastJsonConverterFactory.create())
                 //                .addConverterFactory(jsonAndXmlConverterFactory)
                 .addCallAdapterFactory(rxJavaCallAdapterFactory);
     }
+
+    /**
+     * @return 内部接口数据获取
+     */
+    private static Retrofit getInnerRetrofit() {
+        return getBuilder().baseUrl(Constants.BASE_URL).build();
+    }
+
+
+    private static Api sApi;
+
+    public static Api getApi() {
+        if (sApi == null) {
+            sApi = getInnerRetrofit().create(Api.class);
+        }
+        return sApi;
+    }
+
 }

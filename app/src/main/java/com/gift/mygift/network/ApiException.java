@@ -8,22 +8,28 @@ package com.gift.mygift.network;
  */
 public class ApiException extends RuntimeException {
     private final String localMsg;
-    private final String errorCode;
+    private final int code;
 
-    public ApiException(String errorCode, String reason, String message) {
-        super("errorCode->" + errorCode + ",reason->" + reason + ",message->" + message);
-        this.errorCode = errorCode;
+    public ApiException(int code, String reason, String message) {
+        super("errorCode->" + code + ",reason->" + reason + ",message->" + message);
+        this.code = code;
         this.localMsg = reason;
+    }
+
+    public ApiException(int code, String message) {
+        super("errorCode->" + code + ",message->" + message);
+        this.code = code;
+        this.localMsg = "";
     }
 
     public ApiException(String message) {
         super(message);
         localMsg = message;
-        errorCode = null;
+        code = 0;
     }
 
-    public String getErrorCode() {
-        return errorCode + "";
+    public String getCode() {
+        return code + "";
     }
 
     @Override

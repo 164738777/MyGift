@@ -7,8 +7,8 @@ import com.shizhefei.mvc.ResponseSender;
 
 import rx.Subscription;
 
-import static com.gift.mygift.constant.Constant.PAGEINDEX;
-import static com.gift.mygift.constant.Constant.PAGESIZE;
+import static com.gift.mygift.constant.Constants.PAGEINDEX;
+import static com.gift.mygift.constant.Constants.PAGESIZE;
 
 
 /**
@@ -25,7 +25,7 @@ public abstract class LoadMoreDS<DATA> implements IAsyncDataSource<DATA> {
 
     @Override
     public RequestHandle loadMore(ResponseSender<DATA> sender) throws Exception {
-        return getRequestHandle(sender, 1 + mPage);
+        return getRequestHandle(sender, 20 + mPage);
     }
 
     @Override
