@@ -31,25 +31,25 @@
 
         <RadioButton
             android:id="@+id/rb_guide"
-            style="@style/Home_radioButton"
+            style="@style/RadioButton.Home"
             android:drawableTop="@drawable/slct_home_rb_guide"
             android:text="@string/home_rb_text_guide"/>
 
         <RadioButton
             android:id="@+id/rb_hot"
-            style="@style/Home_radioButton"
+            style="@style/RadioButton.Home"
             android:drawableTop="@drawable/slct_home_rb_hot"
             android:text="@string/home_rb_text_hot"/>
 
         <RadioButton
             android:id="@+id/rb_sort"
-            style="@style/Home_radioButton"
+            style="@style/RadioButton.Home"
             android:drawableTop="@drawable/slct_home_rb_sort"
             android:text="@string/home_rb_text_sort"/>
 
         <RadioButton
             android:id="@+id/rb_my"
-            style="@style/Home_radioButton"
+            style="@style/RadioButton.Home"
             android:drawableTop="@drawable/slct_home_rb_my"
             android:text="@string/home_rb_text_sort"/>
     </RadioGroup>

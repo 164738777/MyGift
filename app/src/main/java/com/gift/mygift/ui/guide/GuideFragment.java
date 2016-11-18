@@ -19,4 +19,9 @@ public class GuideFragment extends BaseFragment {
     protected void initView() {
 
     }
+
+    @Override
+    protected void initData() {
+
+    }
 }

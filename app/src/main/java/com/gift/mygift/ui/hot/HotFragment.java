@@ -50,11 +50,17 @@ public class HotFragment extends BaseFragment {
     protected void initView() {
         GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
         rcv_list.setLayoutManager(manager);
+        rcv_list.hasFixedSize();
 
         mvcHelper = new MVCUltraHelper<>(rl_list);
         mvcHelper.setDataSource(new HotDS());
         mvcHelper.setAdapter(mAdapter);
         mvcHelper.refresh();
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     @Override

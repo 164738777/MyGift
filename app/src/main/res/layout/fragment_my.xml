@@ -1,14 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.gift.mygift.ui.home.HomeActivity">
 
-    <TextView
-        android:text="我的"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@drawable/bg_setting">
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_my_message"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_message"/>
+
+        <ImageView
+            android:id="@+id/iv_my_setting"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@id/iv_my_message"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/ic_setting"/>
+
+        <ImageView
+            android:id="@+id/iv_my_scan"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@id/iv_my_setting"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/iv_my_setting"
+            android:src="@drawable/ic_scan"/>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_my_user"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_avatar_setting"/>
+
+        <TextView
+            android:id="@+id/iv_my_loginstate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_my_user"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="12dp"
+            android:text="未登录"
+            android:textColor="#ffffff"/>
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_my"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <RadioButton
+            android:id="@+id/rb_my_shopcar"
+            style="@style/RadioButton.My"
+            android:drawableTop="@drawable/ic_cart"
+            android:text="@string/my_btn_text_shopcar"/>
+
+        <RadioButton
+            android:id="@+id/rb_my_shoplist"
+            style="@style/RadioButton.My"
+            android:drawableTop="@drawable/ic_order"
+            android:text="@string/my_btn_text_shoplist"/>
+
+        <RadioButton
+            android:id="@+id/rb_my_coupon"
+            style="@style/RadioButton.My"
+            android:drawableTop="@drawable/ic_coupon"
+            android:text="@string/my_btn_text_coupon"/>
+
+        <RadioButton
+            android:id="@+id/rb_my_service"
+            style="@style/RadioButton.My"
+            android:drawableTop="@drawable/ic_service"
+            android:text="@string/my_btn_text_service"/>
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="#f0f0f0"/>
+
+
+    <!--    <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:tabMode="fixed">
+
+        </android.support.design.widget.TabLayout>-->
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/sl_my"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:tl_divider_color="@color/gray"
+        app:tl_divider_width="1dp"
+        app:tl_indicator_color="@color/colorPrimaryDark"
+        app:tl_indicator_corner_radius="0dp"
+        app:tl_tab_space_equal="true"
+        app:tl_textSelectColor="@color/moHui"
+        app:tl_textUnselectColor="@color/moHui"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_my"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

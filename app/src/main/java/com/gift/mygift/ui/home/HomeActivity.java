@@ -60,7 +60,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     @OnClick({R.id.home_toolbar_iv_calender, R.id.home_toolbar_iv_search})
-    public void onCalender(View view) {
+    public void onImageClick(View view) {
         switch (view.getId()) {
             case R.id.home_toolbar_iv_calender:
                 KLog.w("home_toolbar_iv_calender");
