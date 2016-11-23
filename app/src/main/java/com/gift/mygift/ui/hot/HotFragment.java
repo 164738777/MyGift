@@ -2,21 +2,17 @@ package com.gift.mygift.ui.hot;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
-import com.gift.mygift.R;
 import com.gift.mygift.adapter.base.SuperRcvAdapter;
 import com.gift.mygift.adapter.hot.HotItem;
 import com.gift.mygift.entity.HotListBean;
 import com.gift.mygift.network.datasource.HotDS;
-import com.gift.mygift.ui.base.BaseFragment;
+import com.gift.mygift.ui.base.ListWithUpAndDownFragment;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCUltraHelper;
 
 import java.util.List;
 
-import butterknife.BindView;
-import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import kale.adapter.item.AdapterItem;
 
 /**
@@ -25,12 +21,7 @@ import kale.adapter.item.AdapterItem;
  * 作用:  热门Frg
  */
 
-public class HotFragment extends BaseFragment {
-
-    @BindView(R.id.rcv_module_list)
-    RecyclerView rcv_list;
-    @BindView(R.id.rl_module_list)
-    PtrClassicFrameLayout rl_list;
+public class HotFragment extends ListWithUpAndDownFragment {
 
     private MVCHelper<List<HotListBean>> mvcHelper;
     private SuperRcvAdapter<HotListBean> mAdapter = new SuperRcvAdapter<HotListBean>() {
@@ -42,16 +33,21 @@ public class HotFragment extends BaseFragment {
     };
 
     @Override
-    protected int setContentViewId() {
-        return R.layout.module_list;
-    }
-
-    @Override
     protected void initView() {
+        //        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
+        //设置间隔变化,防止上拉加载的提示width变成一半
+        manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                if (position == mAdapter.getItemCount())
+                    return 2;
+                else
+                    return 1;
+            }
+        });
         rcv_list.setLayoutManager(manager);
         rcv_list.hasFixedSize();
-
         mvcHelper = new MVCUltraHelper<>(rl_list);
         mvcHelper.setDataSource(new HotDS());
         mvcHelper.setAdapter(mAdapter);
