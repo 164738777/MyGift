@@ -30,14 +30,18 @@ public abstract class BaseFragment extends Fragment {
         initListener();
         initView();
         initData();
+        setView();
 
         return view;
     }
+
 
     protected abstract int setContentViewId();
 
     protected abstract void initView();
     protected abstract void initData();
+    protected void setView() {
+    }
 
     protected void initListener() {
     }

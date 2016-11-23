@@ -11,25 +11,21 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="35dp">
 
         <com.flyco.tablayout.SlidingTabLayout
             android:id="@+id/sl_guide"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            app:tl_divider_color="@color/gray"
-            app:tl_divider_width="1dp"
             app:tl_indicator_color="@color/colorPrimaryDark"
-            app:tl_indicator_corner_radius="0dp"
-            app:tl_tab_space_equal="false"
             app:tl_textSelectColor="@color/moHui"
             app:tl_textUnselectColor="@color/moHui"/>
 
         <ImageView
             android:id="@+id/iv_guide_arrow"
             android:src="@drawable/ic_arrow"
-            android:layout_width="40dp"
+            android:layout_width="35dp"
             android:layout_height="match_parent"/>
 
     </LinearLayout>

@@ -15,4 +15,16 @@ public class Constants {
     public static final int API_LIMIT = 20;
     public static final int API_GENDER = 1;
     public static final int API_GENERATION = 2;
+
+
+    /*各种送的频道ID*/
+    public static final int API_CHANNEL_HAITAO = 129;
+    public static final int API_CHANNEL_NVPIAO = 10;
+    public static final int API_CHANNEL_CHUANGYISHENGHUO = 125;
+    public static final int API_CHANNEL_JIYOU = 26;
+    public static final int API_CHANNEL_BAMA = 6;
+
+
+
+
 }

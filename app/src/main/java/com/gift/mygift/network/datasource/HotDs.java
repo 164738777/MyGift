@@ -9,7 +9,6 @@ import com.gift.mygift.network.NetWork;
 import com.gift.mygift.network.NetworkTransformer;
 import com.gift.mygift.network.subscriber.ListSubscriber;
 import com.shizhefei.mvc.ResponseSender;
-import com.socks.library.KLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +26,10 @@ public class HotDS extends LoadMoreDS<List<HotListBean>> {
     @Override
     protected Subscription loadData(ResponseSender<List<HotListBean>> responseSender, final int page) {
         return NetWork.getApi().getHotList(Constants.API_GENDER, Constants.API_GENERATION, mPageSize, page)
-                .map(new ApiFun<HotBean>())
-                .map(new Func1<ApiResponse<HotBean>, List<HotListBean>>() {
+                .map(new ApiFun<HotBean<HotListBean>>())
+                .map(new Func1<ApiResponse<HotBean<HotListBean>>, List<HotListBean>>() {
                     @Override
-                    public List<HotListBean> call(ApiResponse<HotBean> hotBeanApiResponse) {
+                    public List<HotListBean> call(ApiResponse<HotBean<HotListBean>> hotBeanApiResponse) {
                         List<HotListBean> items = hotBeanApiResponse.data.items;
                         if (items == null) {
                             items = new ArrayList<>();

@@ -8,8 +8,8 @@ import java.util.List;
  * 作用:
  */
 
-public class HotBean {
-    public List<HotListBean> items;
+public class HotBean<E> {
+    public List<E> items;
     public PagingBean paging;
 
     public class PagingBean{

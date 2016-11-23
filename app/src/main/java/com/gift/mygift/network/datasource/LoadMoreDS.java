@@ -45,7 +45,7 @@ public abstract class LoadMoreDS<DATA> implements IAsyncDataSource<DATA> {
      * @param page
      * @return
      */
-    protected abstract Subscription loadData(ResponseSender<DATA> responseSender, int page);
+    protected abstract Subscription loadData(ResponseSender<DATA> responseSender, final int page);
 
 
     @Override

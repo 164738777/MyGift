@@ -1,5 +1,6 @@
 package com.gift.mygift.ui.guide;
 
+import com.gift.mygift.R;
 import com.gift.mygift.ui.base.BaseFragment;
 
 /**
@@ -9,9 +10,14 @@ import com.gift.mygift.ui.base.BaseFragment;
  */
 
 public class GuideWithHeaderFragment extends BaseFragment {
+
+    public static GuideWithHeaderFragment newInstance(){
+        return new GuideWithHeaderFragment();
+    }
+
     @Override
     protected int setContentViewId() {
-        return 0;
+        return R.layout.fragment_test;
     }
 
     @Override

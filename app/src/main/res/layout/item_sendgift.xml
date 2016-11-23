@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/padding_screen_half"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <com.gift.mygift.view.RoundImageView
+            app:type="round"
+            app:borderRadius="@dimen/padding_screen"
+            android:scaleType="centerCrop"
+            android:id="@+id/item_sendgift_iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <com.gift.mygift.view.RoundImageView
+            app:type="round"
+            app:borderRadius="@dimen/padding_screen"
+            android:src="@drawable/shape_item_send_gift"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:id="@+id/item_sendgift_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/padding_screen"
+            android:paddingLeft="@dimen/padding_screen"
+            android:paddingRight="@dimen/padding_screen"
+            tools:text="1111111111111111111111111111111111111111"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/shape_guide_likecount_bg"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/padding_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/item_sendgift_iv_like"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginLeft="@dimen/padding_screen"
+                android:layout_marginRight="@dimen/padding_screen_half"
+                android:src="@drawable/ic_small_heart_2" />
+
+            <TextView
+                android:layout_marginRight="@dimen/padding_screen_half"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/item_sendgift_tv_likeCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                tools:text="2221" />
+        </LinearLayout>
+
+    </RelativeLayout>
