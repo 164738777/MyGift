@@ -12,6 +12,7 @@ import com.socks.library.KLog;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 作者:  qiang on 2016/11/16 14:39
@@ -51,6 +52,7 @@ public class GuideFragment extends BaseFragment {
         titles.add("送爸妈");
     }
 
+    @OnClick(R.id.iv_guide_arrow)
     public void onImageClick(View view) {
         switch (view.getId()) {
             case R.id.iv_guide_arrow:
