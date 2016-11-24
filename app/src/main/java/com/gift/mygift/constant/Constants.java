@@ -24,6 +24,10 @@ public class Constants {
     public static final int API_CHANNEL_JIYOU = 26;
     public static final int API_CHANNEL_BAMA = 6;
 
+    public static final int API_CHANNEL_JINGXUAN = 101;
+
+
+
 
 
 

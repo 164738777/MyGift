@@ -26,6 +26,17 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <!--分割线-->
+    <style name="Divider">
+    </style>
+    <style name="Divider.Vertical_Red">
+        <item name="android:layout_width">@dimen/divider_vertical_width</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+
+
     <!--首页-->
     <!--首页rb-->
     <style name="RadioButton.Home" parent="RadioButtonHorizontal">

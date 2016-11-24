@@ -11,4 +11,9 @@
 
     <!--字体-->
     <dimen name="textSize_10">10sp</dimen>
+
+
+    <!--分割线-->
+    <dimen name="divider_vertical_width">3dp</dimen>
+
 </resources>

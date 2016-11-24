@@ -68,7 +68,7 @@ public class GuideFragment extends BaseFragment {
             @Override
             public Fragment getItem(int position) {
                 if (position==0)
-                    return GuideWithHeaderFragment.newInstance();
+                    return JingXuanFragment.newInstance();
                 else
                     return SendGiftFragment.newInstance(channelIDs.get(position-1));
             }

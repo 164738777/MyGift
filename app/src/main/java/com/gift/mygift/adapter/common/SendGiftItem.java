@@ -6,7 +6,7 @@ import com.gift.mygift.R;
 import com.gift.mygift.adapter.base.BaseAdapterItem;
 import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.tools.ImageTool;
-import com.gift.mygift.view.RoundImageView;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import butterknife.BindView;
 
@@ -21,7 +21,7 @@ public class SendGiftItem extends BaseAdapterItem<SendGiftData> {
     @BindView(R.id.item_sendgift_tv_title)
     TextView tv_title;
     @BindView(R.id.item_sendgift_iv_background)
-    RoundImageView iv_bg;
+    RoundedImageView iv_bg;
     @BindView(R.id.item_sendgift_tv_likeCount)
     TextView tv_likeCount;
 

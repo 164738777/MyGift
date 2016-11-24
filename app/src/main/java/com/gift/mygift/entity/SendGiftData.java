@@ -1,5 +1,7 @@
 package com.gift.mygift.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.List;
 
 /**
@@ -40,13 +42,13 @@ public class SendGiftData {
      * url : http://www.liwushuo.com/posts/1044602
      */
 
-    public Object approved_at;
+    public Long approved_at;
     public int content_type;
     public String content_url;
     public Object cover_animated_webp_url;
     public String cover_image_url;
     public String cover_webp_url;
-    public int created_at;
+    public long created_at;
     public int editor_id;
     public boolean hidden_cover_image;
     public int id;
@@ -55,16 +57,19 @@ public class SendGiftData {
     public int likes_count;
     public Object limit_end_at;
     public int media_type;
-    public int published_at;
+    public long published_at;
     public String share_msg;
     public String short_title;
     public int status;
     public String template;
     public String title;
     public String type;
-    public int updated_at;
+    public long updated_at;
     public String url;
     public List<String> ad_monitors;
     public List<String> feature_list;
     public List<String> labels;
+
+    @JSONField(deserialize = false , serialize = false)
+    public String timeText;
 }

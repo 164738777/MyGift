@@ -19,7 +19,7 @@ import rx.functions.Func1;
 /**
  * 作者:  qiang on 2016/11/23 14:42
  * 邮箱:  anworkmail_q@126.com
- * 作用:  各种送
+ * 作用:  各种送、精选大图
  */
 
 public class SendGiftDS extends LoadMoreDS<List<SendGiftData>> {
