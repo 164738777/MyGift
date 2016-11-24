@@ -47,7 +47,9 @@ public class SendGiftData {
     public String content_url;
     public Object cover_animated_webp_url;
     public String cover_image_url;
+    public String image_url;
     public String cover_webp_url;
+    public String webp_url;
     public long created_at;
     public int editor_id;
     public boolean hidden_cover_image;
@@ -58,6 +60,8 @@ public class SendGiftData {
     public Object limit_end_at;
     public int media_type;
     public long published_at;
+    public long start_at;
+    public long end_at;
     public String share_msg;
     public String short_title;
     public int status;
@@ -66,6 +70,7 @@ public class SendGiftData {
     public String type;
     public long updated_at;
     public String url;
+    public String redirect_value;
     public List<String> ad_monitors;
     public List<String> feature_list;
     public List<String> labels;

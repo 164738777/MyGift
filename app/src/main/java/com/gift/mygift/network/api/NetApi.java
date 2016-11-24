@@ -42,4 +42,17 @@ public interface NetApi {
             @Query(RequestConstants.API_GENERATION) int generation,
             @Query(RequestConstants.API_LIMIT) int limit,
             @Query(RequestConstants.API_OFFSET) int offset);
+
+    /**
+     * http://api.liwushuo.com/v2/channels/10/items?limit=20&offset=0&gender=1&generation=2&ad=2
+     * @return 各种送页面,有ad
+     */
+    @GET("channels/{id}/items")
+    Observable<ApiResponse<HotBean<SendGiftData>>> getJingXuanList(
+            @Path("id") int channelID,
+            @Query(RequestConstants.API_GENDER) int gender,
+            @Query(RequestConstants.API_GENERATION) int generation,
+            @Query(RequestConstants.API_LIMIT) int limit,
+            @Query(RequestConstants.API_OFFSET) int offset,
+            @Query(RequestConstants.API_AD) int ad);
 }

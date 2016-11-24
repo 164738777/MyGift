@@ -11,4 +11,5 @@ public class RequestConstants {
     public static final String API_GENDER = "gender";
     public static final String API_OFFSET = "offset";
     public static final String API_LIMIT = "limit";
+    public static final String API_AD = "ad";
 }

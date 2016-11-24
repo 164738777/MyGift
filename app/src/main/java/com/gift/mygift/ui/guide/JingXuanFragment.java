@@ -1,13 +1,18 @@
 package com.gift.mygift.ui.guide;
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
 
+import com.gift.mygift.R;
 import com.gift.mygift.adapter.base.SuperListAdapter;
 import com.gift.mygift.adapter.guide.JingXuanBigImageItem;
 import com.gift.mygift.constant.Constants;
 import com.gift.mygift.entity.SendGiftData;
-import com.gift.mygift.network.datasource.SendGiftDS;
+import com.gift.mygift.network.datasource.JingXuanBigImageDS;
 import com.gift.mygift.tools.TimeTool;
 import com.gift.mygift.ui.base.ListWithUpAndDownFragment;
 import com.shizhefei.mvc.IDataAdapter;
@@ -18,6 +23,7 @@ import com.shizhefei.mvc.OnRefreshStateChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bingoogolapple.bgabanner.BGABanner;
 import kale.adapter.item.AdapterItem;
 
 /**
@@ -28,12 +34,15 @@ import kale.adapter.item.AdapterItem;
 
 public class JingXuanFragment extends ListWithUpAndDownFragment {
 
+    private BGABanner banner;
+    private RecyclerView rcv;
+    private List<SendGiftData> mSendGiftDatas;
+
 
     public static JingXuanFragment newInstance() {
         return new JingXuanFragment();
     }
 
-    private List<SendGiftData> mSendGiftDatas;
 
     private MVCHelper<List<SendGiftData>> mvcHelper;
     private SuperListAdapter<SendGiftData> mAdapter = new SuperListAdapter<SendGiftData>() {
@@ -49,8 +58,22 @@ public class JingXuanFragment extends ListWithUpAndDownFragment {
 /*        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rcv_list.setLayoutManager(manager);*/
 
+        initHeaderView();
+    }
+
+    private void initHeaderView() {
+        View v = LayoutInflater.from(getContext()).inflate(R.layout.head_jingxuan, null);
+        banner = (BGABanner) v.findViewById(R.id.head_jingxuan_banner);
+        rcv = (RecyclerView) v.findViewById(R.id.rcv_module_rcvlist);
+        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rcv.setLayoutManager(manager);
+        lv_list.addHeaderView(v);
+    }
+
+    @Override
+    protected void initData() {
         mvcHelper = new MVCUltraHelper<>(rl_list);
-        mvcHelper.setDataSource(new SendGiftDS(Constants.API_CHANNEL_JINGXUAN));
+        mvcHelper.setDataSource(new JingXuanBigImageDS(Constants.API_CHANNEL_JINGXUAN));
         mvcHelper.setAdapter(mAdapter);
         mvcHelper.setOnStateChangeListener(new OnRefreshStateChangeListener<List<SendGiftData>>() {
             @Override
@@ -63,23 +86,25 @@ public class JingXuanFragment extends ListWithUpAndDownFragment {
                 mSendGiftDatas = result;
                 if (mSendGiftDatas == null)
                     mSendGiftDatas = new ArrayList<>();
-                else if(!mSendGiftDatas.isEmpty()){
+                else if (!mSendGiftDatas.isEmpty()) {
                     for (SendGiftData mSendGiftData : mSendGiftDatas) {
-                        if (!TextUtils.isEmpty(mSendGiftData.timeText)){
+                        if (!TextUtils.isEmpty(mSendGiftData.timeText)) {
                             break;
-                        }else{
-                            mSendGiftData.timeText = TimeTool.getTime1(mSendGiftData.published_at);
+                        } else {
+                            switch (mSendGiftData.type) {
+                                case Constants.RESPONSE_TYPE_POST:
+                                    mSendGiftData.timeText = TimeTool.getTime1(mSendGiftData.published_at);
+                                    break;
+                                case Constants.RESPONSE_TYPE_AD:
+                                    mSendGiftData.timeText = TimeTool.getTime1(mSendGiftData.start_at);
+                                    break;
+                            }
                         }
                     }
                 }
             }
         });
         mvcHelper.refresh();
-    }
-
-    @Override
-    protected void initData() {
-
     }
 
     @Override

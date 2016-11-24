@@ -53,6 +53,7 @@
             tools:src="@mipmap/ic_launcher"/>
 
         <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/item_jingxuan_iv_mask"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -76,6 +77,7 @@
             tools:text="1111111111111111111111111111111111111111"/>
 
         <LinearLayout
+            android:id="@+id/item_jingxuan_ll_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

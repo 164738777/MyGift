@@ -15,6 +15,7 @@ public class Constants {
     public static final int API_LIMIT = 20;
     public static final int API_GENDER = 1;
     public static final int API_GENERATION = 2;
+    public static final int API_AD = 2;
 
 
     /*各种送的频道ID*/
@@ -28,7 +29,9 @@ public class Constants {
 
 
 
-
-
-
+    /*item类型:
+    * 广告,post
+    */
+    public static final String RESPONSE_TYPE_POST = "post";
+    public static final String RESPONSE_TYPE_AD = "ad";
 }

@@ -51,7 +51,6 @@ dependencies {
     compile 'cn.bingoogolapple:bga-banner:2.0.9@aar'
     compile "com.github.bumptech.glide:glide:${libs.glide}"
     compile "com.github.VictorAlbertos.RxCache:core:${libs.rxCache}"
-    compile 'com.github.zhaokaiqiang.klog:library:1.5.0'
 
     //网络监听
     compile "com.facebook.stetho:stetho:${libs.stetho}"
@@ -61,9 +60,9 @@ dependencies {
     compile 'com.github.zhaokaiqiang.klog:library:1.6.0'
 
     compile "com.shizhefei:MVCHelper-Library:${libs.mvchelper}"
-    compile "com.shizhefei:MVCHelper-Pullrefresh:${libs.mvchelper}"
+//    compile "com.shizhefei:MVCHelper-Pullrefresh:${libs.mvchelper}"
     compile "com.shizhefei:MVCHelper-UltraRefresh:${libs.mvchelper}"
-    compile 'com.shizhefei:pulltorefresh:1.0.1'
+//    compile 'com.shizhefei:pulltorefresh:1.0.1'
     compile 'in.srain.cube:ultra-ptr:1.0.11'
 
     compile 'com.alibaba:fastjson:1.2.21'
