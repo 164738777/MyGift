@@ -1,6 +1,7 @@
 package com.gift.mygift.ui.guide.contract;
 
 import com.gift.mygift.entity.SendGiftData;
+import com.gift.mygift.ui.base.OnLoadDataListListener;
 import com.gift.mygift.ui.guide.onGuideLoadDataListener;
 
 import java.util.List;
@@ -14,14 +15,17 @@ import java.util.List;
 public interface JingXuanContract {
     
     interface View{
+        void onLoadFirstBanner(List<SendGiftData> SendGiftDatas);
         void onLoadSecondBanner(List<SendGiftData> SendGiftDatas);
     }
 
     interface Presenter{
+        void loadFirstBanner();
         void loadSecondBanner();
     }
 
     interface Model{
+        void getFirstBannerList(OnLoadDataListListener<List<SendGiftData>> listener);
         void getSecondBannerList(onGuideLoadDataListener listener);
     }
 

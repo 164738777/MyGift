@@ -1,6 +1,7 @@
 package com.gift.mygift.ui.guide.model;
 
 import com.gift.mygift.constant.Constants;
+import com.gift.mygift.entity.FirstBannerBean;
 import com.gift.mygift.entity.SecondBannerBean;
 import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.network.ApiFun;
@@ -8,6 +9,7 @@ import com.gift.mygift.network.ApiResponse;
 import com.gift.mygift.network.NetWork;
 import com.gift.mygift.network.NetworkTransformer;
 import com.gift.mygift.network.subscriber.SilenceSubscriber;
+import com.gift.mygift.ui.base.OnLoadDataListListener;
 import com.gift.mygift.ui.guide.contract.JingXuanContract;
 import com.gift.mygift.ui.guide.onGuideLoadDataListener;
 
@@ -22,6 +24,33 @@ import rx.functions.Func1;
 
 public class JingXuanModelImpl implements JingXuanContract.Model{
 
+
+    @Override
+    public void getFirstBannerList(final OnLoadDataListListener<List<SendGiftData>> listener) {
+        NetWork.getApi().getJingXuanFirstBannerList()
+                .map(new ApiFun<FirstBannerBean<SendGiftData>>())
+                .map(new Func1<ApiResponse<FirstBannerBean<SendGiftData>>, List<SendGiftData>>() {
+                    @Override
+                    public List<SendGiftData> call(ApiResponse<FirstBannerBean<SendGiftData>> sApi) {
+                        List<SendGiftData> banners = sApi.data.banners;
+                        if (banners==null)
+                            banners = new ArrayList<>();
+                        return banners;
+                    }
+                })
+                .compose(NetworkTransformer.<List<SendGiftData>>commonSchedulers())
+                .subscribe(new SilenceSubscriber<List<SendGiftData>>(){
+                    @Override
+                    public void onNext(List<SendGiftData> list) {
+                        listener.onSuccess(list);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        listener.onFailure(e);
+                    }
+                });
+    }
 
     @Override
     public void getSecondBannerList(final onGuideLoadDataListener listener) {

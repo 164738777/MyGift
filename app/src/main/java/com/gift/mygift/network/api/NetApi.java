@@ -1,6 +1,7 @@
 package com.gift.mygift.network.api;
 
 import com.gift.mygift.constant.RequestConstants;
+import com.gift.mygift.entity.FirstBannerBean;
 import com.gift.mygift.entity.HotBean;
 import com.gift.mygift.entity.HotListBean;
 import com.gift.mygift.entity.SecondBannerBean;
@@ -60,11 +61,20 @@ public interface NetApi {
 
     /**
      * http://api.liwushuo.com/v2/secondary_banners?gender=1&generation=2
-     * @return 各种送页面
+     * @return 精选广告轮播下面的横向小图
      */
     @GET("secondary_banners")
     Observable<ApiResponse<SecondBannerBean<SendGiftData>>> getJingXuanSecondBannerList(
             @Query(RequestConstants.API_GENDER) int gender,
             @Query(RequestConstants.API_GENERATION) int generation);
+
+
+    /**
+     * http://api.liwushuo.com/v2/banners
+     * @return 精选广告轮播
+     */
+    @GET("banners")
+    Observable<ApiResponse<FirstBannerBean<SendGiftData>>> getJingXuanFirstBannerList();
+
 
 }

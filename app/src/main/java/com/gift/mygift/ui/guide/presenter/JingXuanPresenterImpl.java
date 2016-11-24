@@ -23,14 +23,20 @@ public class JingXuanPresenterImpl implements JingXuanContract.Presenter, onGuid
 
 
     @Override
-    public void onSuccess(List<SendGiftData> data) {
+    public void loadFirstBanner() {
+        mModel.getFirstBannerList(this);
+    }
 
+    @Override
+    public void onSuccess(List<SendGiftData> data) {
+        mView.onLoadFirstBanner(data);
     }
 
     @Override
     public void onFailure(Throwable e) {
 
     }
+
 
     @Override
     public void loadSecondBanner() {

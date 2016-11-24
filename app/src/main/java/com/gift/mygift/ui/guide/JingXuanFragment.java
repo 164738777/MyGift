@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.gift.mygift.R;
 import com.gift.mygift.adapter.base.SuperListAdapter;
@@ -17,6 +18,7 @@ import com.gift.mygift.constant.Constants;
 import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.network.datasource.guide.JingXuanBigImageDS;
 import com.gift.mygift.tools.GiftApp;
+import com.gift.mygift.tools.ImageTool;
 import com.gift.mygift.tools.TimeTool;
 import com.gift.mygift.ui.base.ListWithUpAndDownFragment;
 import com.gift.mygift.ui.guide.contract.JingXuanContract;
@@ -80,15 +82,37 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
 
     private void initHeaderView() {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.head_jingxuan, null);
+
         banner = (BGABanner) v.findViewById(R.id.head_jingxuan_banner);
+        banner.setAdapter(new BGABanner.Adapter() {
+            @Override
+            public void fillBannerItem(BGABanner banner, View view, Object model, int position) {
+                ImageTool.loadImage((ImageView) view, model.toString());
+            }
+        });
+
+
         rcv = (RecyclerView) v.findViewById(R.id.rcv_module_rcvlist);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rcv.setLayoutManager(manager);
         rcv.setBackgroundColor(ContextCompat.getColor(GiftApp.getInstance(), R.color.white));
-        lv_list.addHeaderView(v);
         rcv.setAdapter(mSecondBannerAdapter);
+
+
+        lv_list.addHeaderView(v);
     }
 
+
+    @Override
+    public void onLoadFirstBanner(List<SendGiftData> SendGiftDatas) {
+        ArrayList<String> path = new ArrayList<>();
+        ArrayList<String> titles = new ArrayList<>();
+        for (SendGiftData sendGiftData : SendGiftDatas) {
+            path.add(sendGiftData.image_url);
+            titles.add(sendGiftData.title);
+        }
+        banner.setData(path, titles);
+    }
 
     @Override
     public void onLoadSecondBanner(List<SendGiftData> SendGiftDatas) {
@@ -103,6 +127,7 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
         mvcHelper.setOnStateChangeListener(new OnRefreshStateChangeListener<List<SendGiftData>>() {
             @Override
             public void onStartRefresh(IDataAdapter<List<SendGiftData>> adapter) {
+                mPresenter.loadFirstBanner();
                 mPresenter.loadSecondBanner();
             }
 

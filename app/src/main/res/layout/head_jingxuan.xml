@@ -9,14 +9,16 @@
         android:id="@+id/head_jingxuan_banner"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        app:banner_indicatorGravity="center_horizontal"
+        app:banner_indicatorGravity="center_horizontal|bottom"
         app:banner_isNumberIndicator="false"
-        app:banner_numberIndicatorBackground="@color/transparent"
+        app:banner_pointTopBottomMargin="3dp"
+        app:banner_pointLeftRightMargin="8dp"
+        app:banner_pointContainerBackground="@color/transparent"
         app:banner_pageChangeDuration="500"
         app:banner_pointAutoPlayAble="true"
         app:banner_pointAutoPlayInterval="3000"
         app:banner_transitionEffect="alpha"
-        app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
+        app:banner_pointDrawable="@drawable/slct_guide_first_banner_point"
         />
 
     <include
