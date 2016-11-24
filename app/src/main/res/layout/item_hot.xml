@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="270dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="@dimen/padding_screen_half">
 
@@ -12,11 +13,14 @@
         android:layout_height="match_parent"
         android:background="@drawable/shape_hot_page">
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/item_hot_iv_cover"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
+            app:riv_oval="false"
+            app:riv_corner_radius_top_left="@dimen/padding_screen_half"
+            app:riv_corner_radius_top_right="@dimen/padding_screen_half"
             tools:src="@mipmap/ic_launcher"/>
 
         <TextView

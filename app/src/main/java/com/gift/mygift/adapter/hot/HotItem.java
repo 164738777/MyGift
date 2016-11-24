@@ -1,6 +1,5 @@
 package com.gift.mygift.adapter.hot;
 
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gift.mygift.R;
@@ -8,6 +7,7 @@ import com.gift.mygift.adapter.base.BaseAdapterItem;
 import com.gift.mygift.entity.HotData;
 import com.gift.mygift.entity.HotListBean;
 import com.gift.mygift.tools.ImageTool;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import butterknife.BindView;
 
@@ -20,7 +20,7 @@ import butterknife.BindView;
 public class HotItem extends BaseAdapterItem<HotListBean> {
 
     @BindView(R.id.item_hot_iv_cover)
-    ImageView iv_cover;
+    RoundedImageView iv_cover;
     @BindView(R.id.item_hot_tv_title)
     TextView tv_title;
     @BindView(R.id.item_hot_tv_price)
