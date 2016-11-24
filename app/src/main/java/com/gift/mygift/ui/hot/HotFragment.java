@@ -7,7 +7,7 @@ import com.gift.mygift.adapter.base.SuperRcvAdapter;
 import com.gift.mygift.adapter.hot.HotItem;
 import com.gift.mygift.entity.HotListBean;
 import com.gift.mygift.network.datasource.HotDS;
-import com.gift.mygift.ui.base.ListWithUpAndDownFragment;
+import com.gift.mygift.ui.base.RcvWithUpAndDownFragment;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCUltraHelper;
 
@@ -21,7 +21,7 @@ import kale.adapter.item.AdapterItem;
  * 作用:  热门Frg
  */
 
-public class HotFragment extends ListWithUpAndDownFragment {
+public class HotFragment extends RcvWithUpAndDownFragment {
 
     private MVCHelper<List<HotListBean>> mvcHelper;
     private SuperRcvAdapter<HotListBean> mAdapter = new SuperRcvAdapter<HotListBean>() {

@@ -7,7 +7,7 @@ import com.gift.mygift.adapter.base.SuperRcvAdapter;
 import com.gift.mygift.adapter.common.SendGiftItem;
 import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.network.datasource.SendGiftDS;
-import com.gift.mygift.ui.base.ListWithUpAndDownFragment;
+import com.gift.mygift.ui.base.RcvWithUpAndDownFragment;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCUltraHelper;
 
@@ -21,7 +21,7 @@ import kale.adapter.item.AdapterItem;
  * 作用:  各种送的Frg(例如送女票...)
  */
 
-public class SendGiftFragment extends ListWithUpAndDownFragment {
+public class SendGiftFragment extends RcvWithUpAndDownFragment {
 
     private int channelID;
 

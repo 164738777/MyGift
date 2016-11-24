@@ -1,10 +1,9 @@
 package com.gift.mygift.ui.guide;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 
-import com.gift.mygift.adapter.base.SuperRcvAdapter;
+import com.gift.mygift.adapter.base.SuperListAdapter;
 import com.gift.mygift.adapter.guide.JingXuanBigImageItem;
 import com.gift.mygift.constant.Constants;
 import com.gift.mygift.entity.SendGiftData;
@@ -37,7 +36,7 @@ public class JingXuanFragment extends ListWithUpAndDownFragment {
     private List<SendGiftData> mSendGiftDatas;
 
     private MVCHelper<List<SendGiftData>> mvcHelper;
-    private SuperRcvAdapter<SendGiftData> mAdapter = new SuperRcvAdapter<SendGiftData>() {
+    private SuperListAdapter<SendGiftData> mAdapter = new SuperListAdapter<SendGiftData>() {
         @NonNull
         @Override
         public AdapterItem createItem(Object o) {
@@ -47,8 +46,8 @@ public class JingXuanFragment extends ListWithUpAndDownFragment {
 
     @Override
     protected void initView() {
-        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        rcv_list.setLayoutManager(manager);
+/*        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        rcv_list.setLayoutManager(manager);*/
 
         mvcHelper = new MVCUltraHelper<>(rl_list);
         mvcHelper.setDataSource(new SendGiftDS(Constants.API_CHANNEL_JINGXUAN));

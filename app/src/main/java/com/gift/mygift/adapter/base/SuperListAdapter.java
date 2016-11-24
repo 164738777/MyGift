@@ -12,15 +12,15 @@ import kale.adapter.CommonAdapter;
  * Email: Andecy@foxmail.com;
  * Description: 通用ListView /GridView 的 Adapter，搭配kaleItem和mvcHelper使用
  */
-public abstract class SuperAdapter<T> extends CommonAdapter<T> implements IDataAdapter<List<T>> {
+public abstract class SuperListAdapter<T> extends CommonAdapter<T> implements IDataAdapter<List<T>> {
 
 
-    protected SuperAdapter(int viewTypeCount) {
+    protected SuperListAdapter(int viewTypeCount) {
         super(null, viewTypeCount);
 
     }
 
-    protected SuperAdapter() {
+    protected SuperListAdapter() {
         super(null, 1);
     }
 
