@@ -50,6 +50,7 @@ public class SendGiftData {
     public String image_url;
     public String cover_webp_url;
     public String webp_url;
+    public String target_url;
     public long created_at;
     public int editor_id;
     public boolean hidden_cover_image;

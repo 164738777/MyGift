@@ -1,4 +1,4 @@
-package com.gift.mygift.network.datasource;
+package com.gift.mygift.network.datasource.base;
 
 import com.gift.mygift.network.RxRetrofitHandle;
 import com.shizhefei.mvc.IAsyncDataSource;

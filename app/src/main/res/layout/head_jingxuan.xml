@@ -20,8 +20,5 @@
         />
 
     <include
-        layout="@layout/module_rcv"
-        android:paddingBottom="@dimen/padding_screen_half"
-        android:paddingTop="@dimen/padding_screen_half"
-        />
+        layout="@layout/module_rcv"/>
 </LinearLayout>

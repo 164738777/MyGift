@@ -25,9 +25,11 @@
         android:paddingTop="@dimen/padding_screen_half">
 
         <View
+            android:layout_gravity="center_vertical"
             style="@style/Divider.Vertical_Red"/>
 
         <TextView
+            android:layout_gravity="center_vertical"
             android:id="@+id/item_jingxuan_tv_time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

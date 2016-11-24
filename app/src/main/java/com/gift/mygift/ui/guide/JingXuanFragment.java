@@ -1,6 +1,7 @@
 package com.gift.mygift.ui.guide;
 
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -9,12 +10,17 @@ import android.view.View;
 
 import com.gift.mygift.R;
 import com.gift.mygift.adapter.base.SuperListAdapter;
+import com.gift.mygift.adapter.base.SuperRcvAdapter;
 import com.gift.mygift.adapter.guide.JingXuanBigImageItem;
+import com.gift.mygift.adapter.guide.JingXuanSecondBannerItem;
 import com.gift.mygift.constant.Constants;
 import com.gift.mygift.entity.SendGiftData;
-import com.gift.mygift.network.datasource.JingXuanBigImageDS;
+import com.gift.mygift.network.datasource.guide.JingXuanBigImageDS;
+import com.gift.mygift.tools.GiftApp;
 import com.gift.mygift.tools.TimeTool;
 import com.gift.mygift.ui.base.ListWithUpAndDownFragment;
+import com.gift.mygift.ui.guide.contract.JingXuanContract;
+import com.gift.mygift.ui.guide.presenter.JingXuanPresenterImpl;
 import com.shizhefei.mvc.IDataAdapter;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCUltraHelper;
@@ -32,11 +38,12 @@ import kale.adapter.item.AdapterItem;
  * 作用:  指南有Header的Frg(例如精选)
  */
 
-public class JingXuanFragment extends ListWithUpAndDownFragment {
+public class JingXuanFragment extends ListWithUpAndDownFragment implements JingXuanContract.View {
 
     private BGABanner banner;
     private RecyclerView rcv;
     private List<SendGiftData> mSendGiftDatas;
+    private JingXuanContract.Presenter mPresenter;
 
 
     public static JingXuanFragment newInstance() {
@@ -53,10 +60,20 @@ public class JingXuanFragment extends ListWithUpAndDownFragment {
         }
     };
 
+    private SuperRcvAdapter<SendGiftData> mSecondBannerAdapter = new SuperRcvAdapter<SendGiftData>() {
+        @NonNull
+        @Override
+        public AdapterItem createItem(Object o) {
+            return new JingXuanSecondBannerItem();
+        }
+    };
+
     @Override
     protected void initView() {
 /*        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rcv_list.setLayoutManager(manager);*/
+
+        mPresenter = new JingXuanPresenterImpl(this);
 
         initHeaderView();
     }
@@ -67,7 +84,15 @@ public class JingXuanFragment extends ListWithUpAndDownFragment {
         rcv = (RecyclerView) v.findViewById(R.id.rcv_module_rcvlist);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rcv.setLayoutManager(manager);
+        rcv.setBackgroundColor(ContextCompat.getColor(GiftApp.getInstance(), R.color.white));
         lv_list.addHeaderView(v);
+        rcv.setAdapter(mSecondBannerAdapter);
+    }
+
+
+    @Override
+    public void onLoadSecondBanner(List<SendGiftData> SendGiftDatas) {
+        mSecondBannerAdapter.notifyDataChanged(SendGiftDatas, true);
     }
 
     @Override
@@ -78,7 +103,7 @@ public class JingXuanFragment extends ListWithUpAndDownFragment {
         mvcHelper.setOnStateChangeListener(new OnRefreshStateChangeListener<List<SendGiftData>>() {
             @Override
             public void onStartRefresh(IDataAdapter<List<SendGiftData>> adapter) {
-
+                mPresenter.loadSecondBanner();
             }
 
             @Override
