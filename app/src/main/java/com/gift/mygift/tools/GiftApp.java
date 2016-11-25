@@ -3,7 +3,10 @@ package com.gift.mygift.tools;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
+import com.gift.mygift.entity.SendGiftData;
 import com.socks.library.KLog;
+
+import java.util.List;
 
 /**
  * 作者:  qiang on 2016/11/16 15:25
@@ -19,13 +22,15 @@ public class GiftApp extends Application {
         return INSTANCE;
     }
 
+    public List<SendGiftData> sendGiftDataList;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         INSTANCE = this;
 
-        KLog.init(true);
+        KLog.init(true,"KLog");
         Stetho.initializeWithDefaults(this);//facebook的网络请求监听
         //        MVCHelper.setLoadViewFractory(new LoadViewFactory());
 

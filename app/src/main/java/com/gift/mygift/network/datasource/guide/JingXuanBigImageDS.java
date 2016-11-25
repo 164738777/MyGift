@@ -1,5 +1,7 @@
 package com.gift.mygift.network.datasource.guide;
 
+import android.text.TextUtils;
+
 import com.gift.mygift.constant.Constants;
 import com.gift.mygift.entity.HotBean;
 import com.gift.mygift.entity.SendGiftData;
@@ -9,6 +11,7 @@ import com.gift.mygift.network.NetWork;
 import com.gift.mygift.network.NetworkTransformer;
 import com.gift.mygift.network.datasource.base.LoadMoreDS;
 import com.gift.mygift.network.subscriber.ListSubscriber;
+import com.gift.mygift.tools.TimeTool;
 import com.shizhefei.mvc.ResponseSender;
 
 import java.util.ArrayList;
@@ -51,6 +54,23 @@ public class JingXuanBigImageDS extends LoadMoreDS<List<SendGiftData>> {
                         super.onNext(sendGiftDatas);
                         mPage = page;
                         mPageSize = sendGiftDatas.size();
+
+                       if (!sendGiftDatas.isEmpty()) {
+                            for (SendGiftData mSendGiftData : sendGiftDatas) {
+                                if (!TextUtils.isEmpty(mSendGiftData.timeText)) {
+                                    break;
+                                } else {
+                                    switch (mSendGiftData.type) {
+                                        case Constants.RESPONSE_TYPE_POST:
+                                            mSendGiftData.timeText = TimeTool.getTime1(mSendGiftData.published_at);
+                                            break;
+                                        case Constants.RESPONSE_TYPE_AD:
+                                            mSendGiftData.timeText = TimeTool.getTime1(mSendGiftData.start_at);
+                                            break;
+                                    }
+                                }
+                            }
+                        }
                     }
                 });
     }

@@ -66,7 +66,7 @@ public class MyFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 
 
     }

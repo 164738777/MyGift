@@ -8,6 +8,7 @@ import com.gift.mygift.R;
 import com.gift.mygift.adapter.base.BaseAdapterItem;
 import com.gift.mygift.constant.Constants;
 import com.gift.mygift.entity.SendGiftData;
+import com.gift.mygift.tools.GiftApp;
 import com.gift.mygift.tools.ImageTool;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -48,8 +49,8 @@ public class JingXuanBigImageItem extends BaseAdapterItem<SendGiftData> {
 
     private List<SendGiftData> mSendGiftDatas;
 
-    public JingXuanBigImageItem(List<SendGiftData> sendGiftDatas) {
-        this.mSendGiftDatas = sendGiftDatas;
+    public JingXuanBigImageItem() {
+        this.mSendGiftDatas = GiftApp.getInstance().sendGiftDataList;
     }
 
     @Override
@@ -81,6 +82,7 @@ public class JingXuanBigImageItem extends BaseAdapterItem<SendGiftData> {
         if (i!=0
                 &&mSendGiftDatas!=null
                 &&!mSendGiftDatas.isEmpty()
+                &&sendGiftData.timeText!=null
                 &&sendGiftData.timeText.equals(mSendGiftDatas.get(i-1).timeText)){
             v_divider.setVisibility(View.GONE);
             ll_time.setVisibility(View.GONE);

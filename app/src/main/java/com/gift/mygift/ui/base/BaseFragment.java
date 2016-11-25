@@ -28,7 +28,7 @@ public abstract class BaseFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         initListener();
-        initView();
+        initView(view);
         initData();
         setView();
 
@@ -38,7 +38,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int setContentViewId();
 
-    protected abstract void initView();
+    protected abstract void initView(View view);
     protected abstract void initData();
     protected void setView() {
     }

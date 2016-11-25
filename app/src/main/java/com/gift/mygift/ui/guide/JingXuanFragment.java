@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,14 +18,13 @@ import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.network.datasource.guide.JingXuanBigImageDS;
 import com.gift.mygift.tools.GiftApp;
 import com.gift.mygift.tools.ImageTool;
-import com.gift.mygift.tools.TimeTool;
 import com.gift.mygift.ui.base.ListWithUpAndDownFragment;
 import com.gift.mygift.ui.guide.contract.JingXuanContract;
 import com.gift.mygift.ui.guide.presenter.JingXuanPresenterImpl;
 import com.shizhefei.mvc.IDataAdapter;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCUltraHelper;
-import com.shizhefei.mvc.OnRefreshStateChangeListener;
+import com.shizhefei.mvc.OnStateChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +42,6 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
 
     private BGABanner banner;
     private RecyclerView rcv;
-    private List<SendGiftData> mSendGiftDatas;
     private JingXuanContract.Presenter mPresenter;
 
 
@@ -58,7 +55,7 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
         @NonNull
         @Override
         public AdapterItem createItem(Object o) {
-            return new JingXuanBigImageItem(mSendGiftDatas);
+            return new JingXuanBigImageItem();
         }
     };
 
@@ -71,7 +68,7 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
     };
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 /*        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rcv_list.setLayoutManager(manager);*/
 
@@ -124,7 +121,21 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
         mvcHelper = new MVCUltraHelper<>(rl_list);
         mvcHelper.setDataSource(new JingXuanBigImageDS(Constants.API_CHANNEL_JINGXUAN));
         mvcHelper.setAdapter(mAdapter);
-        mvcHelper.setOnStateChangeListener(new OnRefreshStateChangeListener<List<SendGiftData>>() {
+        mvcHelper.setOnStateChangeListener(new OnStateChangeListener<List<SendGiftData>>() {
+            @Override
+            public void onStartLoadMore(IDataAdapter<List<SendGiftData>> adapter) {
+
+            }
+
+            @Override
+            public void onEndLoadMore(IDataAdapter<List<SendGiftData>> adapter, List<SendGiftData> result) {
+                if (GiftApp.getInstance().sendGiftDataList==null)
+                    GiftApp.getInstance().sendGiftDataList = new ArrayList<>();
+                if (result != null&&!result.isEmpty())
+                    GiftApp.getInstance().sendGiftDataList.addAll(result);
+//                mAdapter.notifyDataChanged(GiftApp.getInstance().sendGiftDataList,false);
+            }
+
             @Override
             public void onStartRefresh(IDataAdapter<List<SendGiftData>> adapter) {
                 mPresenter.loadFirstBanner();
@@ -133,25 +144,9 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
 
             @Override
             public void onEndRefresh(IDataAdapter<List<SendGiftData>> adapter, List<SendGiftData> result) {
-                mSendGiftDatas = result;
-                if (mSendGiftDatas == null)
-                    mSendGiftDatas = new ArrayList<>();
-                else if (!mSendGiftDatas.isEmpty()) {
-                    for (SendGiftData mSendGiftData : mSendGiftDatas) {
-                        if (!TextUtils.isEmpty(mSendGiftData.timeText)) {
-                            break;
-                        } else {
-                            switch (mSendGiftData.type) {
-                                case Constants.RESPONSE_TYPE_POST:
-                                    mSendGiftData.timeText = TimeTool.getTime1(mSendGiftData.published_at);
-                                    break;
-                                case Constants.RESPONSE_TYPE_AD:
-                                    mSendGiftData.timeText = TimeTool.getTime1(mSendGiftData.start_at);
-                                    break;
-                            }
-                        }
-                    }
-                }
+                if (result == null)
+                    result = new ArrayList<>();
+                GiftApp.getInstance().sendGiftDataList = result;
             }
         });
         mvcHelper.refresh();

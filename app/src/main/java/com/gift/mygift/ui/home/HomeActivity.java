@@ -1,9 +1,12 @@
 package com.gift.mygift.ui.home;
 
+import android.graphics.Color;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -12,7 +15,6 @@ import android.widget.TextView;
 import com.gift.mygift.R;
 import com.gift.mygift.tools.ToastTool;
 import com.gift.mygift.ui.base.BaseActivity;
-import com.socks.library.KLog;
 
 import java.util.List;
 
@@ -34,6 +36,10 @@ public class HomeActivity extends BaseActivity {
     TextView tv_title;
     @BindView(R.id.home_toolbar_cardview)
     CardView cardView;
+    @BindView(R.id.home_toolbar_btn_gift)
+    Button btn_gift;
+    @BindView(R.id.home_toolbar_btn_gonglue)
+    Button btn_gonglue;
 
     @BindView(R.id.home_toolbar_iv_calender)
     ImageView iv_calender;
@@ -63,13 +69,33 @@ public class HomeActivity extends BaseActivity {
     public void onImageClick(View view) {
         switch (view.getId()) {
             case R.id.home_toolbar_iv_calender:
-                KLog.w("home_toolbar_iv_calender");
+                ToastTool.show(this,"home_toolbar_iv_calender");
                 break;
             case R.id.home_toolbar_iv_search:
-                KLog.w("home_toolbar_iv_search");
+                ToastTool.show(this,"home_toolbar_iv_search");
                 break;
         }
 
+    }
+
+    @OnClick({R.id.home_toolbar_btn_gonglue,R.id.home_toolbar_btn_gift})
+    public void onBtnClick(View view){
+        switch (view.getId()) {
+            case R.id.home_toolbar_btn_gonglue:
+                controller.showFrg(FragmentController.FRG_SORT_GONGLUE);
+                btn_gonglue.setBackgroundColor(Color.WHITE);
+                btn_gonglue.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
+                btn_gift.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimary));
+                btn_gift.setTextColor(Color.WHITE);
+                break;
+            case R.id.home_toolbar_btn_gift:
+                controller.showFrg(FragmentController.FRG_SORT_GIFT);
+                btn_gift.setBackgroundColor(Color.WHITE);
+                btn_gift.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
+                btn_gonglue.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimary));
+                btn_gonglue.setTextColor(Color.WHITE);
+                break;
+        }
     }
 
     /**
@@ -99,7 +125,8 @@ public class HomeActivity extends BaseActivity {
                 tv_title.setText(getResources().getString(R.string.text_hot));
                 break;
             case R.id.rb_sort:
-                controller.showFrg(FragmentController.FRG_SORT);
+//                controller.showFrg(FragmentController.FRG_SORT);
+                controller.showFrg(FragmentController.FRG_SORT_GONGLUE);
                 radioButtons.get(2).setChecked(true);
                 toolbar.setVisibility(View.VISIBLE);
                 tv_title.setVisibility(View.GONE);

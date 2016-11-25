@@ -41,7 +41,7 @@ public class GuideFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 
     }
 

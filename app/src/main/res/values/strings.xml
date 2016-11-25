@@ -9,6 +9,14 @@
     <string name="home_btn_text_gongnue">攻略</string>
     <string name="home_btn_text_gift">礼物</string>
 
+    <!--分类-->
+    <string name="sort_gongLue_title_zhuanTi">专题</string>
+    <string name="sort_gongLue_title_seeAll">查看全部</string>
+    <string name="sort_gongLue_title_pinLei">品类</string>
+    <string name="sort_gongLue_title_style">风格</string>
+    <string name="sort_gongLue_title_object">对象</string>
+
+
     <!--我的 控件-->
     <string name="my_btn_text_shopcar">购物车</string>
     <string name="my_btn_text_shoplist">订单</string>

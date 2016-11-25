@@ -1,6 +1,7 @@
 package com.gift.mygift.ui.my;
 
 import android.support.annotation.IntDef;
+import android.view.View;
 import android.widget.TextView;
 
 import com.gift.mygift.R;
@@ -40,7 +41,7 @@ public class MyContentFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
         switch (frgType) {
             case GIFT:
                 tv_text.setText(getResources().getText(R.string.my_tv_text_gift));

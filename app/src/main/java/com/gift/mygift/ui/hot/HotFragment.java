@@ -2,6 +2,7 @@ package com.gift.mygift.ui.hot;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.View;
 
 import com.gift.mygift.adapter.base.SuperRcvAdapter;
 import com.gift.mygift.adapter.hot.HotItem;
@@ -33,7 +34,7 @@ public class HotFragment extends RcvWithUpAndDownFragment {
     };
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
         //        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
         //设置间隔变化,防止上拉加载的提示width变成一半

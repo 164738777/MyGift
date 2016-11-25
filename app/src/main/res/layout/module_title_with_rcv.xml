@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/fragment_sort_gonglue">
+
+
+    <TextView
+        android:id="@+id/tv_module_title_with_rcv"
+        style="@style/TextView_Sort_GongLue_title"
+        android:layout_margin="10dp"
+        tools:text="@string/sort_gongLue_title_pinLei"/>
+
+    <include
+        layout="@layout/module_rcv"/>
+
+    <View
+        style="@style/Divider.Horizontal_gray"/>
+
+</LinearLayout>

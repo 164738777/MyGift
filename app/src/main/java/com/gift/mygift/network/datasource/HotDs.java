@@ -26,7 +26,7 @@ import rx.functions.Func1;
 public class HotDS extends LoadMoreDS<List<HotListBean>> {
     @Override
     protected Subscription loadData(ResponseSender<List<HotListBean>> responseSender, final int page) {
-        return NetWork.getApi().getHotList(Constants.API_GENDER, Constants.API_GENERATION, mPageSize, page)
+        return NetWork.getHotApi().getHotList(Constants.API_GENDER, Constants.API_GENERATION, mPageSize, page)
                 .map(new ApiFun<HotBean<HotListBean>>())
                 .map(new Func1<ApiResponse<HotBean<HotListBean>>, List<HotListBean>>() {
                     @Override

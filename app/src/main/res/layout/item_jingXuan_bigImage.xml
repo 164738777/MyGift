@@ -11,9 +11,7 @@
         tools:visibility="visible"
         android:visibility="gone"
         android:id="@+id/item_jingxuan_divider"
-        android:background="@color/default_background"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/padding_screen"/>
+        style="@style/Divider.Horizontal_gray"/>
 
     <LinearLayout
         android:id="@+id/item_jingxuan_ll_time"

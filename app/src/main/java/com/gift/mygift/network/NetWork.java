@@ -2,7 +2,9 @@ package com.gift.mygift.network;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.gift.mygift.constant.Constants;
-import com.gift.mygift.network.api.NetApi;
+import com.gift.mygift.network.api.GuideApi;
+import com.gift.mygift.network.api.HotApi;
+import com.gift.mygift.network.api.SortApi;
 import com.gift.mygift.network.parser.FastJsonConverterFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -61,13 +63,30 @@ public class NetWork {
     }
 
 
-    private static NetApi sNetApi;
+    private static GuideApi sGuideApi;
+    private static HotApi sHotApi;
+    private static SortApi sSortApi;
 
-    public static NetApi getApi() {
-        if (sNetApi == null) {
-            sNetApi = getInnerRetrofit().create(NetApi.class);
+    public static GuideApi getApi() {
+        if (sGuideApi == null) {
+            sGuideApi = getInnerRetrofit().create(GuideApi.class);
         }
-        return sNetApi;
+        return sGuideApi;
     }
+
+    public static HotApi getHotApi() {
+        if (sHotApi == null) {
+            sHotApi = getInnerRetrofit().create(HotApi.class);
+        }
+        return sHotApi;
+    }
+
+    public static SortApi getSortApi() {
+        if (sSortApi == null) {
+            sSortApi = getInnerRetrofit().create(SortApi.class);
+        }
+        return sSortApi;
+    }
+
 
 }

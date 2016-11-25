@@ -2,6 +2,7 @@ package com.gift.mygift.ui.common;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.gift.mygift.adapter.base.SuperRcvAdapter;
 import com.gift.mygift.adapter.common.SendGiftItem;
@@ -41,7 +42,7 @@ public class SendGiftFragment extends RcvWithUpAndDownFragment {
     };
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         rcv_list.setLayoutManager(manager);
 

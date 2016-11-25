@@ -10,6 +10,8 @@ import com.gift.mygift.ui.guide.GuideFragment;
 import com.gift.mygift.ui.hot.HotFragment;
 import com.gift.mygift.ui.my.MyFragment;
 import com.gift.mygift.ui.sort.SortFragment;
+import com.gift.mygift.ui.sort.SortGiftFragment;
+import com.gift.mygift.ui.sort.SortGongLueFragment;
 
 import java.util.ArrayList;
 
@@ -32,7 +34,12 @@ public class FragmentController {
     public static final int FRG_SORT = 2;
     public static final int FRG_MY = 3;
 
-    @IntDef({FRG_GUIDE, FRG_HOT, FRG_SORT, FRG_MY})
+    /*分类里面的2个Frg*/
+    public static final int FRG_SORT_GONGLUE = 4;
+    public static final int FRG_SORT_GIFT = 5;
+
+
+    @IntDef({FRG_GUIDE, FRG_HOT, FRG_SORT, FRG_MY,FRG_SORT_GIFT,FRG_SORT_GONGLUE})
     private @interface FrgPosition {
     }
 
@@ -61,6 +68,8 @@ public class FragmentController {
         fragments.add(new HotFragment());
         fragments.add(new SortFragment());
         fragments.add(new MyFragment());
+        fragments.add(new SortGongLueFragment());
+        fragments.add(new SortGiftFragment());
 
         tran = manager.beginTransaction();
         for (Fragment fragment : fragments) {

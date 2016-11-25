@@ -3,7 +3,6 @@ package com.gift.mygift.network.api;
 import com.gift.mygift.constant.RequestConstants;
 import com.gift.mygift.entity.FirstBannerBean;
 import com.gift.mygift.entity.HotBean;
-import com.gift.mygift.entity.HotListBean;
 import com.gift.mygift.entity.SecondBannerBean;
 import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.network.ApiResponse;
@@ -19,19 +18,7 @@ import rx.Observable;
  * 作用:
  */
 
-public interface NetApi {
-
-    /**
-     * http://api.liwushuo.com/v2/items?limit=20&offset=0&gender=1&generation=2
-     * @return 热门首页
-     */
-    @GET("items")
-    Observable<ApiResponse<HotBean<HotListBean>>> getHotList(
-            @Query(RequestConstants.API_GENDER) int gender,
-            @Query(RequestConstants.API_GENERATION) int generation,
-            @Query(RequestConstants.API_LIMIT) int limit,
-            @Query(RequestConstants.API_OFFSET) int offset);
-
+public interface GuideApi {
 
     /**
      * http://api.liwushuo.com/v2/channels/10/items?limit=20&offset=0&gender=1&generation=2
