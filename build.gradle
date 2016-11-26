@@ -2,7 +2,7 @@
 
 ext {
 
-    configuration = [
+/*    configuration = [
             package          : "com.lance.freebook",
             compileSdkVersion: 24,
             buildToolsVersion: "24.0.1",
@@ -10,7 +10,7 @@ ext {
             targetSdkVersion : 24,
             versionCode      : 1,
             versionName      : "1.0"
-    ]
+    ]*/
 
     libraries = [
             supportVersion: "24.2.1",
