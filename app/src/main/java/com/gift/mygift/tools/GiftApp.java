@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.stetho.Stetho;
 import com.gift.mygift.entity.SendGiftData;
+import com.gift.mygift.entity.SortGongLueList;
 import com.socks.library.KLog;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class GiftApp extends Application {
     }
 
     public List<SendGiftData> sendGiftDataList;
+    public List<SortGongLueList> sortGongLueLists;
 
     @Override
     public void onCreate() {

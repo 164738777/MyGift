@@ -3,6 +3,8 @@ package com.gift.mygift.network.api;
 import com.gift.mygift.constant.RequestConstants;
 import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.entity.SortGongLueBean;
+import com.gift.mygift.entity.SortGongLueList;
+import com.gift.mygift.entity.SortGongLueZhuanTiBean;
 import com.gift.mygift.network.ApiResponse;
 
 import retrofit2.http.GET;
@@ -26,7 +28,14 @@ public interface SortApi {
      * @return 攻略专题首页
      */
     @GET("collections")
-    Observable<ApiResponse<SortGongLueBean<SendGiftData>>> getSortGongLueZhuanTiList(
+    Observable<ApiResponse<SortGongLueZhuanTiBean<SendGiftData>>> getSortGongLueZhuanTiList(
             @Query(RequestConstants.API_LIMIT) int limit,
             @Query(RequestConstants.API_OFFSET) int offset);
+
+    /**
+     * http://api.liwushuo.com/v2/channel_groups/all
+     * @return 攻略小图
+     */
+    @GET("channel_groups/all")
+    Observable<ApiResponse<SortGongLueBean<SortGongLueList>>> getSortList();
 }

@@ -10,35 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/padding_screen"
-            android:paddingRight="@dimen/padding_screen"
-            android:paddingTop="@dimen/padding_screen">
-
-            <TextView
-                android:id="@+id/tv_gongLue_seeAll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:text="@string/sort_gongLue_title_seeAll"
-                android:textColor="@color/gray"
-                android:textSize="12sp"/>
-
-            <TextView
-                style="@style/TextView_Sort_GongLue_title"
-                android:layout_alignParentBottom="true"
-                android:text="@string/sort_gongLue_title_zhuanTi"/>
-
-        </RelativeLayout>
-
-        <include
-            layout="@layout/module_rcv"/>
-
-        <View
-            style="@style/Divider.Horizontal_gray"/>
+        <include layout="@layout/head_sort_gonglue"/>
 
         <include
             android:id="@+id/ll_gongLue_pinLei"

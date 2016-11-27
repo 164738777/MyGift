@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="@dimen/padding_screen"
+    >
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/item_sort_gonglue_iv_cover"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        tools:src="@mipmap/ic_launcher"
+        />
+
+    <TextView
+        android:id="@+id/item_sort_gonglue_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_screen"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        tools:text="文字"
+        />
+</LinearLayout>

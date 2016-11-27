@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_screen"
+        android:paddingRight="@dimen/padding_screen"
+        android:paddingTop="@dimen/padding_screen">
+
+        <TextView
+            android:id="@+id/tv_gongLue_seeAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/sort_gongLue_title_seeAll"
+            android:textColor="@color/gray"
+            android:textSize="12sp"/>
+
+        <TextView
+            style="@style/TextView_Sort_GongLue_title"
+            android:layout_alignParentBottom="true"
+            android:text="@string/sort_gongLue_title_zhuanTi"/>
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/module_rcv"/>
+
+    <View
+        style="@style/Divider.Horizontal_gray"/>
+</LinearLayout>

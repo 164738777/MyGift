@@ -2,16 +2,17 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:showIn="@layout/fragment_sort_gonglue">
+    android:layout_height="wrap_content">
 
 
     <TextView
         android:id="@+id/tv_module_title_with_rcv"
         style="@style/TextView_Sort_GongLue_title"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/padding_screen"
+        android:textSize="16sp"
         tools:text="@string/sort_gongLue_title_pinLei"/>
 
     <include

@@ -29,6 +29,7 @@ import com.shizhefei.mvc.OnStateChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
 import cn.bingoogolapple.bgabanner.BGABanner;
 import kale.adapter.item.AdapterItem;
 
@@ -80,7 +81,8 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
     private void initHeaderView() {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.head_jingxuan, null);
 
-        banner = (BGABanner) v.findViewById(R.id.head_jingxuan_banner);
+        banner = ButterKnife.findById(v,R.id.head_jingxuan_banner);
+//        banner = (BGABanner) v.findViewById(R.id.head_jingxuan_banner);
         banner.setAdapter(new BGABanner.Adapter() {
             @Override
             public void fillBannerItem(BGABanner banner, View view, Object model, int position) {
@@ -89,7 +91,8 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
         });
 
 
-        rcv = (RecyclerView) v.findViewById(R.id.rcv_module_rcvlist);
+        rcv = ButterKnife.findById(v,R.id.rcv_module_rcvlist);
+//        rcv = (RecyclerView) v.findViewById(R.id.rcv_module_rcvlist);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rcv.setLayoutManager(manager);
         rcv.setBackgroundColor(ContextCompat.getColor(GiftApp.getInstance(), R.color.white));

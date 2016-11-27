@@ -9,10 +9,5 @@ import java.util.List;
  */
 
 public class SortGongLueBean<E> {
-    public List<E> collections;
-    public PagingBean paging;
-
-    public class PagingBean{
-        public String next_url;
-    }
+    public List<E> channel_groups;
 }

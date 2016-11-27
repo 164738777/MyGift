@@ -76,6 +76,14 @@ public class SendGiftData {
     public List<String> feature_list;
     public List<String> labels;
 
+    public String banner_image_url;
+    public String subtitle;
+
+    public int items_count;
+    public int group_id;
+    public String icon_url;
+    public String name;
+
     @JSONField(deserialize = false , serialize = false)
     public String timeText;
 }

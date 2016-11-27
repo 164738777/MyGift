@@ -27,8 +27,8 @@ public abstract class BaseFragment extends Fragment {
         View view = inflater.inflate(setContentViewId(), container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        initListener();
         initView(view);
+        initListener();
         initData();
         setView();
 
@@ -57,5 +57,17 @@ public abstract class BaseFragment extends Fragment {
         if (unbinder != null)
             unbinder.unbind();
     }
+
+/*    public boolean isViewInvisible() {
+        return true;
+    }
+
+    @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+        if (getView() != null && isViewInvisible()) {
+            getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
+        }
+    }*/
 
 }
