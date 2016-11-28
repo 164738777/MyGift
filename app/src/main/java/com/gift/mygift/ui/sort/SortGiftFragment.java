@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ListView;
 
 import com.gift.mygift.R;
@@ -17,6 +18,7 @@ import com.shizhefei.mvc.IDataAdapter;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCNormalHelper;
 import com.shizhefei.mvc.OnRefreshStateChangeListener;
+import com.socks.library.KLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ import kale.adapter.item.AdapterItem;
 import q.rorbin.verticaltablayout.TabAdapter;
 import q.rorbin.verticaltablayout.VerticalTabLayout;
 import q.rorbin.verticaltablayout.widget.QTabView;
+import q.rorbin.verticaltablayout.widget.TabView;
 
 /**
  * 作者:  qiang on 2016/11/25 11:33
@@ -58,8 +61,40 @@ public class SortGiftFragment extends BaseFragment {
     }
 
     @Override
+    protected void initListener() {
+        vt_left.addOnTabSelectedListener(new VerticalTabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabView tab, int position) {
+                lv_right.setSelection(position);
+            }
+
+            @Override
+            public void onTabReselected(TabView tab, int position) {
+                if (lv_right.getSelectedItemPosition() != position) {
+                    lv_right.setSelection(position);
+                }
+            }
+        });
+
+        lv_right.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                KLog.w("onScrollStateChanged        ");
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                //                vt_left.setTabSelected(firstVisibleItem);
+                KLog.w("onScroll        " + firstVisibleItem);
+            }
+        });
+    }
+
+    @Override
     protected void initView(View view) {
         lv_right.setVerticalScrollBarEnabled(false);
+        lv_right.setFastScrollEnabled(false);
     }
 
     @Override

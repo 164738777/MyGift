@@ -66,27 +66,28 @@ public class JingXuanBigImageItem extends BaseAdapterItem<SendGiftData> {
                 tv_title.setVisibility(View.VISIBLE);
                 iv_mask.setVisibility(View.VISIBLE);
                 tv_title.setText(sendGiftData.title);
-                ImageTool.loadImage(iv_bg,sendGiftData.cover_image_url);
+                ImageTool.loadImage(iv_bg, sendGiftData.cover_image_url);
                 ll_like.setVisibility(View.VISIBLE);
-                tv_likeCount.setText(sendGiftData.likes_count+"");
+                tv_likeCount.setText(sendGiftData.likes_count + "");
                 break;
             case Constants.RESPONSE_TYPE_AD:
                 tv_title.setVisibility(View.GONE);
                 iv_mask.setVisibility(View.INVISIBLE);
                 ll_like.setVisibility(View.GONE);
-                ImageTool.loadImage(iv_bg,sendGiftData.image_url);
+                ImageTool.loadImage(iv_bg, sendGiftData.image_url);
                 break;
         }
 
         /*设置时间分组*/
-        if (i!=0
-                &&mSendGiftDatas!=null
-                &&!mSendGiftDatas.isEmpty()
-                &&sendGiftData.timeText!=null
-                &&sendGiftData.timeText.equals(mSendGiftDatas.get(i-1).timeText)){
+        if (i != 0
+                && mSendGiftDatas != null
+                && !mSendGiftDatas.isEmpty()
+                && i < mSendGiftDatas.size()
+                && sendGiftData.timeText != null
+                && sendGiftData.timeText.equals(mSendGiftDatas.get(i - 1).timeText)) {
             v_divider.setVisibility(View.GONE);
             ll_time.setVisibility(View.GONE);
-        }else{
+        } else {
             v_divider.setVisibility(View.VISIBLE);
             ll_time.setVisibility(View.VISIBLE);
             tv_time.setText(sendGiftData.timeText);
