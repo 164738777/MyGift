@@ -15,7 +15,7 @@ import com.gift.mygift.adapter.sort.SortGongLueListItem;
 import com.gift.mygift.adapter.sort.SortGongLueZhuanTiItem;
 import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.entity.SortGongLueList;
-import com.gift.mygift.network.datasource.sort.GongLueDS;
+import com.gift.mygift.network.datasource.sort.SortGongLueDS;
 import com.gift.mygift.tools.GiftApp;
 import com.gift.mygift.tools.ToastTool;
 import com.gift.mygift.ui.base.ListFragment;
@@ -90,7 +90,7 @@ public class SortGongLueFragment extends ListFragment implements SortGongLueCont
     @Override
     protected void initData() {
         mvcHelper = new MVCNormalHelper<>(lv_list);
-        mvcHelper.setDataSource(new GongLueDS());
+        mvcHelper.setDataSource(new SortGongLueDS());
         mvcHelper.setAdapter(mAdapter);
         mvcHelper.setOnStateChangeListener(new OnRefreshStateChangeListener<List<SortGongLueList>>() {
             @Override

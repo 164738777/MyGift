@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical"
+    >
+
+
+    <ImageView
+        android:id="@+id/item_sort_gift_item_iv_cover"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        tools:src="@mipmap/ic_launcher"
+        />
+
+    <TextView
+        android:id="@+id/item_sort_gift_item_tv_title"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding_screen"
+        android:paddingTop="@dimen/padding_screen"
+        android:textSize="11sp"
+        tools:text="速食/即食小零食"
+        />
+</LinearLayout>

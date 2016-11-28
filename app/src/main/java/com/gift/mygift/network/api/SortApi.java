@@ -2,6 +2,8 @@ package com.gift.mygift.network.api;
 
 import com.gift.mygift.constant.RequestConstants;
 import com.gift.mygift.entity.SendGiftData;
+import com.gift.mygift.entity.SortGiftBean;
+import com.gift.mygift.entity.SortGiftList;
 import com.gift.mygift.entity.SortGongLueBean;
 import com.gift.mygift.entity.SortGongLueList;
 import com.gift.mygift.entity.SortGongLueZhuanTiBean;
@@ -37,5 +39,16 @@ public interface SortApi {
      * @return 攻略小图
      */
     @GET("channel_groups/all")
-    Observable<ApiResponse<SortGongLueBean<SortGongLueList>>> getSortList();
+    Observable<ApiResponse<SortGongLueBean<SortGongLueList>>> getSortGongLueList();
+
+
+
+    /*礼物*/
+
+    /**
+     * http://api.liwushuo.com/v2/item_categories/tree
+     * @return 礼物
+     */
+    @GET("item_categories/tree")
+    Observable<ApiResponse<SortGiftBean<SortGiftList>>> getSortGiftList();
 }

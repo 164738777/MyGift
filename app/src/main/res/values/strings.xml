@@ -16,6 +16,8 @@
     <string name="sort_gongLue_title_style">风格</string>
     <string name="sort_gongLue_title_object">对象</string>
 
+    <string name="sort_gift_title_shenQi">选礼神器</string>
+
 
     <!--我的 控件-->
     <string name="my_btn_text_shopcar">购物车</string>

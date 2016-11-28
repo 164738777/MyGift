@@ -81,6 +81,8 @@ public class SendGiftData {
 
     public int items_count;
     public int group_id;
+    public int order;
+    public int parent_id;
     public String icon_url;
     public String name;
 

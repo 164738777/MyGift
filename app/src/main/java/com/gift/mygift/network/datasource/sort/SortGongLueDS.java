@@ -22,10 +22,10 @@ import rx.functions.Func1;
  * 作用:  分类 攻略 小图DS
  */
 
-public class GongLueDS extends CommonDS<List<SortGongLueList>> {
+public class SortGongLueDS extends CommonDS<List<SortGongLueList>> {
     @Override
     protected Subscription loadData(ResponseSender<List<SortGongLueList>> responseSender) {
-        return NetWork.getSortApi().getSortList()
+        return NetWork.getSortApi().getSortGongLueList()
                 .map(new ApiFun<SortGongLueBean<SortGongLueList>>())
                 .map(new Func1<ApiResponse<SortGongLueBean<SortGongLueList>>, List<SortGongLueList>>() {
                     @Override

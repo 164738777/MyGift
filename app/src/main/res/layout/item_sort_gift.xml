@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/white"
+              android:padding="@dimen/padding_screen">
+
+    <LinearLayout
+        android:id="@+id/item_sort_gift_ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_screen"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/gray"/>
+
+        <TextView
+            android:id="@+id/item_sort_gift_tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            tools:text="个性配饰"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/gray"/>
+    </LinearLayout>
+
+    <include
+        layout="@layout/module_rcv"/>
+
+</LinearLayout>
