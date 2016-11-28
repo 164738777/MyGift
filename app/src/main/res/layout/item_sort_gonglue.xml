@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_screen"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="15sp"
         tools:text="文字"
         />
 </LinearLayout>

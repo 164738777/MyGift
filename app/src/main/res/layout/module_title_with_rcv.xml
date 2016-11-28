@@ -11,8 +11,7 @@
     <TextView
         android:id="@+id/tv_module_title_with_rcv"
         style="@style/TextView_Sort_GongLue_title"
-        android:layout_margin="@dimen/padding_screen"
-        android:textSize="16sp"
+        android:layout_margin="15dp"
         tools:text="@string/sort_gongLue_title_pinLei"/>
 
     <include

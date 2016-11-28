@@ -17,7 +17,10 @@ import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.entity.SortGongLueList;
 import com.gift.mygift.network.datasource.sort.GongLueDS;
 import com.gift.mygift.tools.GiftApp;
+import com.gift.mygift.tools.ToastTool;
 import com.gift.mygift.ui.base.ListFragment;
+import com.gift.mygift.ui.sort.contract.SortGongLueContract;
+import com.gift.mygift.ui.sort.presenter.SortGongLuePresenterImpl;
 import com.shizhefei.mvc.IDataAdapter;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCNormalHelper;
@@ -34,14 +37,14 @@ import kale.adapter.item.AdapterItem;
  * 作用:  分类里面的攻略Frg
  */
 
-public class SortGongLueFragment extends ListFragment {
+public class SortGongLueFragment extends ListFragment implements SortGongLueContract.View {
 
 
     private TextView tv_gongLue_seeAll;
     private RecyclerView rcv_zhuanTi;
 
     private MVCHelper<List<SortGongLueList>> mvcHelper;
-
+    private SortGongLueContract.Presenter mPresenter;
 
     private SuperListAdapter<SortGongLueList> mAdapter = new SuperListAdapter<SortGongLueList>() {
         @NonNull
@@ -60,13 +63,20 @@ public class SortGongLueFragment extends ListFragment {
 
     @Override
     protected void initView(View view) {
-        //        initHeaderView();
+        mPresenter = new SortGongLuePresenterImpl(this);
+        initHeaderView();
     }
 
     private void initHeaderView() {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.head_sort_gonglue, null);
 
         tv_gongLue_seeAll = ButterKnife.findById(v, R.id.tv_gongLue_seeAll);
+        tv_gongLue_seeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastTool.show(getContext(), "tv_gongLue_seeAll");
+            }
+        });
 
         rcv_zhuanTi = ButterKnife.findById(v, R.id.rcv_module_rcvlist);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -76,15 +86,6 @@ public class SortGongLueFragment extends ListFragment {
         lv_list.addHeaderView(v);
     }
 
-    @Override
-    protected void initListener() {
-/*        tv_gongLue_seeAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastTool.show(getContext(), "tv_gongLue_seeAll");
-            }
-        });*/
-    }
 
     @Override
     protected void initData() {
@@ -94,22 +95,27 @@ public class SortGongLueFragment extends ListFragment {
         mvcHelper.setOnStateChangeListener(new OnRefreshStateChangeListener<List<SortGongLueList>>() {
             @Override
             public void onStartRefresh(IDataAdapter<List<SortGongLueList>> adapter) {
-
+                mPresenter.loadZhuanTiBanner();
             }
 
             @Override
             public void onEndRefresh(IDataAdapter<List<SortGongLueList>> adapter, List<SortGongLueList> result) {
-/*                if (result == null)
-                    result = new ArrayList<>();
-                GiftApp.getInstance().sortGongLueLists = result;*/
+
             }
         });
         mvcHelper.refresh();
 
     }
 
+
+    @Override
+    public void loadZhuanTiBannerSuccess(List<SendGiftData> list) {
+        mZhuanTiAdapter.notifyDataChanged(list, true);
+    }
+
     @Override
     protected void preRelease() {
         mvcHelper.destory();
     }
+
 }

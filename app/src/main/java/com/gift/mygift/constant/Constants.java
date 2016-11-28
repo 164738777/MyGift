@@ -13,6 +13,7 @@ public class Constants {
     public static final String BASE_URL = "http://api.liwushuo.com/v2/";
 
     public static final int API_LIMIT = 20;
+    public static final int API_OFFSET = 0;
     public static final int API_GENDER = 1;
     public static final int API_GENERATION = 2;
     public static final int API_AD = 2;

@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:tools="http://schemas.android.com/tools"
-                    android:orientation="vertical"
-                    android:layout_width="150dp"
-                    android:layout_height="80dp"
-                    tools:background="@color/congQing">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="140dp"
+              android:layout_height="90dp"
+              android:orientation="vertical"
+              tools:background="@color/congQing">
 
-                <ImageView
-                    android:id="@+id/item_gonglue_zhuanti_iv"
-                    android:padding="@dimen/padding_screen"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/item_gonglue_zhuanti_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="center"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="@dimen/padding_screen_half"
+        android:paddingRight="@dimen/padding_screen_half"
+        app:riv_corner_radius="@dimen/padding_screen_half"
+        app:riv_oval="false"/>
 
 </LinearLayout>

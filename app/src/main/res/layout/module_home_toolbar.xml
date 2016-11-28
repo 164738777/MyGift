@@ -47,16 +47,16 @@
                 <Button
                     android:id="@+id/home_toolbar_btn_gonglue"
                     style="@style/Home_toolbar_btn"
-                    android:background="#ffaaaa"
+                    android:background="@color/white"
                     android:text="@string/home_btn_text_gongnue"
-                    android:textColor="#ffffff"/>
+                    android:textColor="@color/colorPrimary"/>
 
                 <Button
                     android:id="@+id/home_toolbar_btn_gift"
                     style="@style/Home_toolbar_btn"
-                    android:background="#ffffff"
+                    android:background="@color/colorPrimary"
                     android:text="@string/home_btn_text_gift"
-                    android:textColor="#ed6969"/>
+                    android:textColor="@color/white"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
