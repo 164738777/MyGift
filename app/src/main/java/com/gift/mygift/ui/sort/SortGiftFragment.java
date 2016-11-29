@@ -91,7 +91,10 @@ public class SortGiftFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        mvcHelper = new MVCNormalHelper<>(lv_right);
+        //这样最底部会有   已经加载完毕  的字样
+        //        mvcHelper = new MVCNormalHelper<>(lv_right);
+
+        mvcHelper = new MVCNormalHelper<>(lv_right, MVCHelper.loadViewFactory.madeLoadView(), null);
         mvcHelper.setDataSource(new SortGiftDS());
         mvcHelper.setAdapter(mAdapter);
         mvcHelper.setOnStateChangeListener(new OnRefreshStateChangeListener<List<SortGiftList>>() {
@@ -171,7 +174,7 @@ public class SortGiftFragment extends BaseFragment {
                     vt_left.setTabSelected(mTabPosition);
                 }*/
 
-                KLog.w("onScroll            "+firstVisibleItem+"      "+visibleItemCount+"   "+totalItemCount);
+                KLog.w("onScroll            " + firstVisibleItem + "      " + visibleItemCount + "   " + totalItemCount);
             }
         });
     }

@@ -89,7 +89,7 @@ public class SortGongLueFragment extends ListFragment implements SortGongLueCont
 
     @Override
     protected void initData() {
-        mvcHelper = new MVCNormalHelper<>(lv_list);
+        mvcHelper = new MVCNormalHelper<>(lv_list, MVCHelper.loadViewFactory.madeLoadView(), null);
         mvcHelper.setDataSource(new SortGongLueDS());
         mvcHelper.setAdapter(mAdapter);
         mvcHelper.setOnStateChangeListener(new OnRefreshStateChangeListener<List<SortGongLueList>>() {

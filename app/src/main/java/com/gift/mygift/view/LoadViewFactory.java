@@ -2,13 +2,21 @@ package com.gift.mygift.view;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.utils.SizeUtils;
+import com.gift.mygift.R;
 import com.gift.mygift.tools.ToastTool;
 import com.shizhefei.mvc.ILoadViewFactory;
-import com.shizhefei.view.vary.VaryViewHelperXV;
+import com.shizhefei.view.vary.VaryViewHelper;
+
+import butterknife.ButterKnife;
 
 
 /**
@@ -19,8 +27,6 @@ import com.shizhefei.view.vary.VaryViewHelperXV;
  */
 public class LoadViewFactory implements ILoadViewFactory {
 
-    public LoadViewFactory() {
-    }
 
     @Override
     public ILoadMoreView madeLoadMoreView() {
@@ -44,7 +50,7 @@ public class LoadViewFactory implements ILoadViewFactory {
             Context context = contentView.getContext();
             TextView textView = new TextView(context);
             textView.setTextColor(Color.GRAY);
-            textView.setPadding(0, dip2px(context, 16), 0, dip2px(context, 16));
+            textView.setPadding(0, SizeUtils.dp2px(context, 16), 0, SizeUtils.dp2px(context, 16));
             textView.setGravity(Gravity.CENTER);
             footViewHolder.addFootView(textView);
 
@@ -80,7 +86,7 @@ public class LoadViewFactory implements ILoadViewFactory {
     }
 
     private class LoadViewHelper implements ILoadView {
-        private VaryViewHelperXV helper;
+        private VaryViewHelper helper;
         private View.OnClickListener onClickRefreshListener;
         private Context context;
 
@@ -88,7 +94,7 @@ public class LoadViewFactory implements ILoadViewFactory {
         public void init(View switchView, View.OnClickListener onClickRefreshListener) {
             this.context = switchView.getContext().getApplicationContext();
             this.onClickRefreshListener = onClickRefreshListener;
-            helper = new VaryViewHelperXV(switchView);
+            helper = new VaryViewHelper(switchView);
         }
 
         @Override
@@ -98,10 +104,24 @@ public class LoadViewFactory implements ILoadViewFactory {
 
         @Override
         public void showLoading() {
-            /*Context context = helper.getContext();
-            View loadingView = View.inflate(context, R.layout.loading, null);
-            ((TextView) loadingView.findViewById(R.id.tv_loading)).setText("拼命加载中...");
-            helper.showLayout(loadingView);*/
+
+            View loadingView = helper.inflate(R.layout.loading);
+
+            ImageView iv = ButterKnife.findById(loadingView, R.id.iv_loading);
+
+            //QiangBug 加载久了会有时间差值问题
+            AnimationDrawable animationDrawable = (AnimationDrawable) iv.getDrawable();
+            animationDrawable.start();
+
+            //        Animation animation = AnimationUtils.loadAnimation(this,R.anim.anim_loading_set);
+            //        iv.startAnimation(animation);
+
+            ScaleAnimation animation = new ScaleAnimation(1, 0, 1, 1, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            animation.setDuration(1500);
+            animation.setRepeatCount(Animation.INFINITE);
+            iv.startAnimation(animation);
+
+            helper.showLayout(loadingView);
         }
 
         @Override
@@ -111,8 +131,13 @@ public class LoadViewFactory implements ILoadViewFactory {
 
         @Override
         public void showFail(Exception exception) {
-            /*Context context = helper.getContext();
-            View failView = View.inflate(context, R.layout.empty, null);
+            View failView = helper.inflate(R.layout.empty);
+            TextView tv = ButterKnife.findById(failView, R.id.tv_empty);
+            tv.setText("出现错误哦,点我重新加载");
+            failView.setOnClickListener(onClickRefreshListener);
+            helper.showLayout(failView);
+
+            /*
             SpannableString spannableString = new SpannableString("点击重试");
             spannableString.setSpan(new ForegroundColorSpan(x.app().getResources().getColor(R.color.primary)) {
                 @Override
@@ -121,29 +146,17 @@ public class LoadViewFactory implements ILoadViewFactory {
                     ds.setUnderlineText(true);
                 }
             }, spannableString.length() - 4, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-            ((TextView) failView.findViewById(R.id.tv_empty)).setText(spannableString);
-            ((ImageView) failView.findViewById(R.id.iv_empty)).setImageResource(R.mipmap.ic_empty_net);
-            failView.findViewById(R.id.ll_empty).setOnClickListener(onClickRefreshListener);
-            helper.showLayout(failView);*/
+           */
         }
 
         @Override
         public void showEmpty() {
-           /* Context context = helper.getContext();
-            View emptyView = View.inflate(context, R.layout.empty, null);
-            ((TextView) emptyView.findViewById(R.id.tv_empty)).setText("暂无内容");
-            ((ImageView) emptyView.findViewById(R.id.iv_empty)).setImageResource(R.mipmap.ic_empty);
-            emptyView.findViewById(R.id.ll_empty).setOnClickListener(onClickRefreshListener);
-            helper.showLayout(emptyView);*/
+            View failView = helper.inflate(R.layout.empty);
+            TextView tv = ButterKnife.findById(failView, R.id.tv_empty);
+            tv.setText("木有东西哦,点我刷新再试试");
+            failView.setOnClickListener(onClickRefreshListener);
+            helper.showLayout(failView);
         }
     }
 
-    /**
-     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
-     */
-    private static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
 }

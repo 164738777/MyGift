@@ -28,6 +28,8 @@ public class FragmentController {
     private ArrayList<Fragment> fragments;
 
     private FragmentTransaction tran;
+    @FrgPosition
+    private int mPosition = 0;
 
     public static final int FRG_GUIDE = 0;
     public static final int FRG_HOT = 1;
@@ -39,7 +41,7 @@ public class FragmentController {
     public static final int FRG_SORT_GIFT = 5;
 
 
-    @IntDef({FRG_GUIDE, FRG_HOT, FRG_SORT, FRG_MY,FRG_SORT_GIFT,FRG_SORT_GONGLUE})
+    @IntDef({FRG_GUIDE, FRG_HOT, FRG_SORT, FRG_MY, FRG_SORT_GIFT, FRG_SORT_GONGLUE})
     private @interface FrgPosition {
     }
 
@@ -74,18 +76,23 @@ public class FragmentController {
         tran = manager.beginTransaction();
         for (Fragment fragment : fragments) {
             tran.add(containerId, fragment);
+            tran.hide(fragment);
         }
+        tran.show(fragments.get(0));
         tran.commit();
         //        tran.commitAllowingStateLoss();
     }
 
     public void showFrg(@FrgPosition int position) {
+        if (mPosition == position){
+            return;
+        }
         hideFrgs();
-//        tran = manager.beginTransaction();
         Fragment fragment = fragments.get(position);
         tran.show(fragment);
         tran.commit();
-//                tran.commitAllowingStateLoss();
+        mPosition = position;
+        //            tran.commitAllowingStateLoss();
     }
 
     /**
@@ -93,10 +100,11 @@ public class FragmentController {
      */
     private void hideFrgs() {
         tran = manager.beginTransaction();
-        for (Fragment fragment : fragments) {
+/*        for (Fragment fragment : fragments) {
             tran.hide(fragment);
-        }
-//        tran.commit();
-//                tran.commitAllowingStateLoss();
+        }*/
+        tran.hide(fragments.get(mPosition));
+        //        tran.commit();
+        //        tran.commitAllowingStateLoss();
     }
 }
