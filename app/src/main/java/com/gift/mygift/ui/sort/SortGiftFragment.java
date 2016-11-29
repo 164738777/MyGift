@@ -39,8 +39,6 @@ import q.rorbin.verticaltablayout.widget.TabView;
 
 public class SortGiftFragment extends BaseFragment {
 
-    //    @BindView(R.id.lv_sort_gift_left)
-    //    ListView lv_left;
     @BindView(R.id.vt_sort_gift_left)
     VerticalTabLayout vt_left;
     @BindView(R.id.lv_module_list)
@@ -55,6 +53,11 @@ public class SortGiftFragment extends BaseFragment {
         }
     };
 
+    private ArrayList<String> titles = new ArrayList<>();
+    private int mTabPosition;
+    private boolean scrollFlag;
+
+
     @Override
     protected int setContentViewId() {
         return R.layout.fragment_sort_gift;
@@ -66,29 +69,18 @@ public class SortGiftFragment extends BaseFragment {
             @Override
             public void onTabSelected(TabView tab, int position) {
                 lv_right.setSelection(position);
+                mTabPosition = position;
             }
 
             @Override
             public void onTabReselected(TabView tab, int position) {
                 if (lv_right.getSelectedItemPosition() != position) {
                     lv_right.setSelection(position);
+                    mTabPosition = position;
                 }
             }
         });
 
-        lv_right.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-                KLog.w("onScrollStateChanged        ");
-
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                //                vt_left.setTabSelected(firstVisibleItem);
-                KLog.w("onScroll        " + firstVisibleItem);
-            }
-        });
     }
 
     @Override
@@ -112,7 +104,6 @@ public class SortGiftFragment extends BaseFragment {
             public void onEndRefresh(IDataAdapter<List<SortGiftList>> adapter, List<SortGiftList> result) {
                 if (result == null || result.isEmpty())
                     return;
-                final ArrayList<String> titles = new ArrayList<>();
                 for (SortGiftList sortGiftList : result) {
                     titles.add(sortGiftList.name);
                 }
@@ -149,6 +140,40 @@ public class SortGiftFragment extends BaseFragment {
             }
         });
         mvcHelper.refresh();
+
+        //不能直接用lv_right的setOnScrollListener
+        //由于MvcHelper已经设置，所以要一下操作
+        ListView lv = mvcHelper.getContentView();
+        lv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                scrollFlag = scrollState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL;
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+/*                if (scrollFlag) {
+                    if (firstVisibleItem > mTabPosition) {
+                        //上滑
+
+                    }
+                    if (firstVisibleItem < mTabPosition) {
+                        //下滑
+                    }
+                    mTabPosition = firstVisibleItem;
+                }*/
+/*                if (firstVisibleItem+visibleItemCount==totalItemCount&&mTabPosition<titles.size()){
+                    mTabPosition = titles.size()-1;
+                    vt_left.setTabSelected(mTabPosition);
+                    return;
+                }else if (mTabPosition!=firstVisibleItem){
+                    mTabPosition = firstVisibleItem;
+                    vt_left.setTabSelected(mTabPosition);
+                }*/
+
+                KLog.w("onScroll            "+firstVisibleItem+"      "+visibleItemCount+"   "+totalItemCount);
+            }
+        });
     }
 
     @OnClick(R.id.ll_sort_gift_shenQi)

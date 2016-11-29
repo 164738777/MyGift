@@ -81,10 +81,11 @@ public class FragmentController {
 
     public void showFrg(@FrgPosition int position) {
         hideFrgs();
+//        tran = manager.beginTransaction();
         Fragment fragment = fragments.get(position);
         tran.show(fragment);
         tran.commit();
-        //        tran.commitAllowingStateLoss();
+//                tran.commitAllowingStateLoss();
     }
 
     /**
@@ -95,5 +96,7 @@ public class FragmentController {
         for (Fragment fragment : fragments) {
             tran.hide(fragment);
         }
+//        tran.commit();
+//                tran.commitAllowingStateLoss();
     }
 }
