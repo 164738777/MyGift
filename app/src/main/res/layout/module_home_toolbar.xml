@@ -37,27 +37,27 @@
             tools:visibility="visible">
 
 
-            <LinearLayout
+            <RadioGroup
                 android:id="@+id/rg_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:padding="3dp">
 
-                <Button
-                    android:id="@+id/home_toolbar_btn_gonglue"
-                    style="@style/Home_toolbar_btn"
+                <RadioButton
+                    android:id="@+id/home_toolbar_rb_gonglue"
+                    style="@style/Home_toolbar_rb"
                     android:background="@color/white"
                     android:text="@string/home_btn_text_gongnue"
                     android:textColor="@color/colorPrimary"/>
 
-                <Button
-                    android:id="@+id/home_toolbar_btn_gift"
-                    style="@style/Home_toolbar_btn"
+                <RadioButton
+                    android:id="@+id/home_toolbar_rb_gift"
+                    style="@style/Home_toolbar_rb"
                     android:background="@color/colorPrimary"
                     android:text="@string/home_btn_text_gift"
                     android:textColor="@color/white"/>
-            </LinearLayout>
+            </RadioGroup>
         </android.support.v7.widget.CardView>
 
         <ImageView

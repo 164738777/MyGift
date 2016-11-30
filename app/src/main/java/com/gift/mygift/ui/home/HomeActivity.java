@@ -6,7 +6,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -27,7 +26,7 @@ public class HomeActivity extends BaseActivity {
 
     @BindView(R.id.home_radioGroup)
     RadioGroup radioGroup;
-    @BindViews({R.id.rb_guide, R.id.rb_hot, R.id.rb_sort, R.id.rb_my})
+    @BindViews({R.id.rb_guide, R.id.rb_hot, R.id.rb_sort, R.id.rb_my, R.id.home_toolbar_rb_gonglue, R.id.home_toolbar_rb_gift})
     List<RadioButton> radioButtons;
 
     @BindView(R.id.home_toolbar)
@@ -36,10 +35,9 @@ public class HomeActivity extends BaseActivity {
     TextView tv_title;
     @BindView(R.id.home_toolbar_cardview)
     CardView cardView;
-    @BindView(R.id.home_toolbar_btn_gift)
-    Button btn_gift;
-    @BindView(R.id.home_toolbar_btn_gonglue)
-    Button btn_gonglue;
+
+    @BindView(R.id.rg_main)
+    RadioGroup rg_sort;
 
     @BindView(R.id.home_toolbar_iv_calender)
     ImageView iv_calender;
@@ -60,7 +58,13 @@ public class HomeActivity extends BaseActivity {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                setTab(checkedId);
+                setMainTab(checkedId);
+            }
+        });
+        rg_sort.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                setSortTab(checkedId);
             }
         });
     }
@@ -69,41 +73,22 @@ public class HomeActivity extends BaseActivity {
     public void onImageClick(View view) {
         switch (view.getId()) {
             case R.id.home_toolbar_iv_calender:
-                ToastTool.show(this,"home_toolbar_iv_calender");
+                ToastTool.show(this, "home_toolbar_iv_calender");
                 break;
             case R.id.home_toolbar_iv_search:
-                ToastTool.show(this,"home_toolbar_iv_search");
+                ToastTool.show(this, "home_toolbar_iv_search");
                 break;
         }
 
     }
 
-    @OnClick({R.id.home_toolbar_btn_gonglue,R.id.home_toolbar_btn_gift})
-    public void onBtnClick(View view){
-        switch (view.getId()) {
-            case R.id.home_toolbar_btn_gonglue:
-                controller.showFrg(FragmentController.FRG_SORT_GONGLUE);
-                btn_gonglue.setBackgroundColor(Color.WHITE);
-                btn_gonglue.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
-                btn_gift.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimary));
-                btn_gift.setTextColor(Color.WHITE);
-                break;
-            case R.id.home_toolbar_btn_gift:
-                controller.showFrg(FragmentController.FRG_SORT_GIFT);
-                btn_gift.setBackgroundColor(Color.WHITE);
-                btn_gift.setTextColor(ContextCompat.getColor(this,R.color.colorPrimary));
-                btn_gonglue.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimary));
-                btn_gonglue.setTextColor(Color.WHITE);
-                break;
-        }
-    }
 
     /**
      * Frg切换的变化
      *
      * @param checkedId
      */
-    private void setTab(int checkedId) {
+    private void setMainTab(int checkedId) {
         switch (checkedId) {
             case R.id.rb_guide:
             default:
@@ -125,8 +110,9 @@ public class HomeActivity extends BaseActivity {
                 tv_title.setText(getResources().getString(R.string.text_hot));
                 break;
             case R.id.rb_sort:
-//                controller.showFrg(FragmentController.FRG_SORT);
-                controller.showFrg(FragmentController.FRG_SORT_GONGLUE);
+                //                controller.showFrg(FragmentController.FRG_SORT);
+                //                controller.showFrg(FragmentController.FRG_SORT_GONGLUE);
+                setSortTab(rg_sort.getCheckedRadioButtonId());
                 radioButtons.get(2).setChecked(true);
                 toolbar.setVisibility(View.VISIBLE);
                 tv_title.setVisibility(View.GONE);
@@ -141,13 +127,40 @@ public class HomeActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 分类Frg切换
+     *
+     * @param checkedId
+     */
+    private void setSortTab(int checkedId) {
+        switch (checkedId) {
+            case R.id.home_toolbar_rb_gonglue:
+            default:
+                controller.showFrg(FragmentController.FRG_SORT_GONGLUE);
+                radioButtons.get(4).setChecked(true);
+                radioButtons.get(4).setBackgroundColor(Color.WHITE);
+                radioButtons.get(4).setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                radioButtons.get(5).setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                radioButtons.get(5).setTextColor(Color.WHITE);
+                break;
+            case R.id.home_toolbar_rb_gift:
+                controller.showFrg(FragmentController.FRG_SORT_GIFT);
+                radioButtons.get(5).setChecked(true);
+                radioButtons.get(5).setBackgroundColor(Color.WHITE);
+                radioButtons.get(5).setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                radioButtons.get(4).setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                radioButtons.get(4).setTextColor(Color.WHITE);
+                break;
+        }
+    }
+
     @Override
     protected void initView() {
 
         setSupportActionBar(toolbar);
 
         controller = new FragmentController(this, R.id.home_container);
-        setTab(R.id.rb_guide);
+        setMainTab(R.id.rb_guide);
     }
 
 

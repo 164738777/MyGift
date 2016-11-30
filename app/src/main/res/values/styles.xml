@@ -65,10 +65,11 @@
         <item name="android:textColor">@drawable/slct_home_rb_text</item>
     </style>
     <!--首页toolbar的btn-->
-    <style name="Home_toolbar_btn">
+    <style name="Home_toolbar_rb">
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">30dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
     </style>
 
     <!--分类-->
