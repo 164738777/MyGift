@@ -19,10 +19,10 @@ import java.util.List;
 import rx.functions.Func1;
 
 /**
-* Created by MVPHelper on 2016/11/24
-*/
+ * Created by MVPHelper on 2016/11/24
+ */
 
-public class JingXuanModelImpl implements JingXuanContract.Model{
+public class JingXuanModelImpl implements JingXuanContract.Model {
 
 
     @Override
@@ -33,13 +33,13 @@ public class JingXuanModelImpl implements JingXuanContract.Model{
                     @Override
                     public List<SendGiftData> call(ApiResponse<FirstBannerBean<SendGiftData>> sApi) {
                         List<SendGiftData> banners = sApi.data.banners;
-                        if (banners==null)
+                        if (banners == null)
                             banners = new ArrayList<>();
                         return banners;
                     }
                 })
                 .compose(NetworkTransformer.<List<SendGiftData>>commonSchedulers())
-                .subscribe(new SilenceSubscriber<List<SendGiftData>>(){
+                .subscribe(new SilenceSubscriber<List<SendGiftData>>() {
                     @Override
                     public void onNext(List<SendGiftData> list) {
                         listener.onSuccess(list);
@@ -54,19 +54,19 @@ public class JingXuanModelImpl implements JingXuanContract.Model{
 
     @Override
     public void getSecondBannerList(final onGuideLoadDataListener listener) {
-        NetWork.getApi().getJingXuanSecondBannerList(Constants.API_GENDER,Constants.API_GENERATION)
+        NetWork.getApi().getJingXuanSecondBannerList(Constants.API_GENDER, Constants.API_GENERATION)
                 .map(new ApiFun<SecondBannerBean<SendGiftData>>())
                 .map(new Func1<ApiResponse<SecondBannerBean<SendGiftData>>, List<SendGiftData>>() {
                     @Override
                     public List<SendGiftData> call(ApiResponse<SecondBannerBean<SendGiftData>> sApi) {
                         List<SendGiftData> secondary_banners = sApi.data.secondary_banners;
-                        if (secondary_banners==null)
+                        if (secondary_banners == null)
                             secondary_banners = new ArrayList<>();
                         return secondary_banners;
                     }
                 })
                 .compose(NetworkTransformer.<List<SendGiftData>>commonSchedulers())
-                .subscribe(new SilenceSubscriber<List<SendGiftData>>(){
+                .subscribe(new SilenceSubscriber<List<SendGiftData>>() {
                     @Override
                     public void onNext(List<SendGiftData> sendGiftDatas) {
                         listener.onSecondSuccess(sendGiftDatas);
@@ -78,7 +78,6 @@ public class JingXuanModelImpl implements JingXuanContract.Model{
                     }
                 });
     }
-
 
 
 }

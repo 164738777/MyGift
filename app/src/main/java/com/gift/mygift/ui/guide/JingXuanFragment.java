@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 
 import com.gift.mygift.R;
@@ -18,6 +19,7 @@ import com.gift.mygift.entity.SendGiftData;
 import com.gift.mygift.network.datasource.guide.JingXuanBigImageDS;
 import com.gift.mygift.tools.GiftApp;
 import com.gift.mygift.tools.ImageTool;
+import com.gift.mygift.tools.ToastTool;
 import com.gift.mygift.ui.base.ListWithUpAndDownFragment;
 import com.gift.mygift.ui.guide.contract.JingXuanContract;
 import com.gift.mygift.ui.guide.presenter.JingXuanPresenterImpl;
@@ -25,7 +27,6 @@ import com.shizhefei.mvc.IDataAdapter;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCUltraHelper;
 import com.shizhefei.mvc.OnStateChangeListener;
-import com.socks.library.KLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,10 +70,10 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
         }
     };
 
+    private List<SendGiftData> firstBannerList = new ArrayList<>();
+
     @Override
     protected void initView(View view) {
-/*        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        rcv_list.setLayoutManager(manager);*/
 
         mPresenter = new JingXuanPresenterImpl(this);
 
@@ -82,18 +83,25 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
     private void initHeaderView() {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.head_jingxuan, null);
 
-        banner = ButterKnife.findById(v,R.id.head_jingxuan_banner);
-//        banner = (BGABanner) v.findViewById(R.id.head_jingxuan_banner);
+        banner = ButterKnife.findById(v, R.id.head_jingxuan_banner);
         banner.setAdapter(new BGABanner.Adapter() {
             @Override
             public void fillBannerItem(BGABanner banner, View view, Object model, int position) {
                 ImageTool.loadImage((ImageView) view, model.toString());
             }
         });
+        banner.setOnItemClickListener(new BGABanner.OnItemClickListener() {
+            @Override
+            public void onBannerItemClick(BGABanner banner, View view, Object model, int position) {
+                if (firstBannerList != null && !firstBannerList.isEmpty()) {
+                    SendGiftData sendGiftData = firstBannerList.get(position);
+                    ToastTool.show(getContext(), sendGiftData.id + "");
+                }
+            }
+        });
 
 
-        rcv = ButterKnife.findById(v,R.id.rcv_module_rcvlist);
-//        rcv = (RecyclerView) v.findViewById(R.id.rcv_module_rcvlist);
+        rcv = ButterKnife.findById(v, R.id.rcv_module_rcvlist);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rcv.setLayoutManager(manager);
         rcv.setBackgroundColor(ContextCompat.getColor(GiftApp.getInstance(), R.color.white));
@@ -103,9 +111,24 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
         lv_list.addHeaderView(v);
     }
 
+    @Override
+    protected void initListener() {
+        lv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int pos = position - lv_list.getHeaderViewsCount();
+                if (pos < 0) {
+                    return;
+                }
+                SendGiftData sendGiftData = mAdapter.getData().get(pos);
+                ToastTool.show(getContext(), sendGiftData.id + "");
+            }
+        });
+    }
 
     @Override
     public void onLoadFirstBanner(List<SendGiftData> SendGiftDatas) {
+        firstBannerList = SendGiftDatas;
         ArrayList<String> path = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();
         for (SendGiftData sendGiftData : SendGiftDatas) {
@@ -133,11 +156,10 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
 
             @Override
             public void onEndLoadMore(IDataAdapter<List<SendGiftData>> adapter, List<SendGiftData> result) {
-                if (GiftApp.getInstance().sendGiftDataList==null)
+                if (GiftApp.getInstance().sendGiftDataList == null)
                     GiftApp.getInstance().sendGiftDataList = new ArrayList<>();
-                if (result != null&&!result.isEmpty())
+                if (result != null && !result.isEmpty())
                     GiftApp.getInstance().sendGiftDataList.addAll(result);
-//                mAdapter.notifyDataChanged(GiftApp.getInstance().sendGiftDataList,false);
             }
 
             @Override

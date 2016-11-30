@@ -8,8 +8,8 @@ import com.gift.mygift.ui.guide.onGuideLoadDataListener;
 import java.util.List;
 
 /**
-* Created by MVPHelper on 2016/11/24
-*/
+ * Created by MVPHelper on 2016/11/24
+ */
 
 public class JingXuanPresenterImpl implements JingXuanContract.Presenter, onGuideLoadDataListener {
 
