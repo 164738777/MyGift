@@ -66,8 +66,8 @@
     </style>
     <!--首页toolbar的btn-->
     <style name="Home_toolbar_rb">
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">20dp</item>
         <item name="android:gravity">center</item>
         <item name="android:button">@null</item>
     </style>

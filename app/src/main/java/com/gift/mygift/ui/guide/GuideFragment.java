@@ -8,9 +8,9 @@ import android.view.View;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.gift.mygift.R;
 import com.gift.mygift.constant.Constants;
+import com.gift.mygift.tools.ToastTool;
 import com.gift.mygift.ui.base.BaseFragment;
 import com.gift.mygift.ui.common.SendGiftFragment;
-import com.socks.library.KLog;
 
 import java.util.ArrayList;
 
@@ -67,10 +67,10 @@ public class GuideFragment extends BaseFragment {
         mAdapter = new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                if (position==0)
+                if (position == 0)
                     return JingXuanFragment.newInstance();
                 else
-                    return SendGiftFragment.newInstance(channelIDs.get(position-1));
+                    return SendGiftFragment.newInstance(channelIDs.get(position - 1));
             }
 
             @Override
@@ -91,7 +91,7 @@ public class GuideFragment extends BaseFragment {
     public void onImageClick(View view) {
         switch (view.getId()) {
             case R.id.iv_guide_arrow:
-                KLog.w("iv_guide_arrow");
+                ToastTool.show(getContext(), "iv_guide_arrow");
                 break;
         }
     }
