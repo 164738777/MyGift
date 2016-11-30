@@ -18,7 +18,6 @@ import com.shizhefei.mvc.IDataAdapter;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCNormalHelper;
 import com.shizhefei.mvc.OnRefreshStateChangeListener;
-import com.socks.library.KLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +55,7 @@ public class SortGiftFragment extends BaseFragment {
     private ArrayList<String> titles = new ArrayList<>();
     private int mTabPosition;
     private boolean scrollFlag;
+    private boolean setTabFlag;
 
 
     @Override
@@ -68,15 +68,23 @@ public class SortGiftFragment extends BaseFragment {
         vt_left.addOnTabSelectedListener(new VerticalTabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabView tab, int position) {
-                lv_right.setSelection(position);
-                mTabPosition = position;
+                if (!scrollFlag) {
+                    lv_right.setSelection(position);
+                    mTabPosition = position;
+                    setTabFlag = true;
+                } else {
+                    setTabFlag = false;
+                }
             }
 
             @Override
             public void onTabReselected(TabView tab, int position) {
-                if (lv_right.getSelectedItemPosition() != position) {
+                if (!scrollFlag && lv_right.getSelectedItemPosition() != position) {
                     lv_right.setSelection(position);
                     mTabPosition = position;
+                    setTabFlag = true;
+                } else {
+                    setTabFlag = false;
                 }
             }
         });
@@ -87,6 +95,7 @@ public class SortGiftFragment extends BaseFragment {
     protected void initView(View view) {
         lv_right.setVerticalScrollBarEnabled(false);
         lv_right.setFastScrollEnabled(false);
+        lv_right.setBackgroundColor(Color.WHITE);
     }
 
     @Override
@@ -155,26 +164,32 @@ public class SortGiftFragment extends BaseFragment {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-/*                if (scrollFlag) {
-                    if (firstVisibleItem > mTabPosition) {
-                        //上滑
-
-                    }
-                    if (firstVisibleItem < mTabPosition) {
-                        //下滑
-                    }
-                    mTabPosition = firstVisibleItem;
-                }*/
-/*                if (firstVisibleItem+visibleItemCount==totalItemCount&&mTabPosition<titles.size()){
-                    mTabPosition = titles.size()-1;
-                    vt_left.setTabSelected(mTabPosition);
+                if (setTabFlag && !scrollFlag) {
+                    //设置了Tab但是不是用户来滚动的
+                    //lv_right.setSelection();这个方法会默认调用一次setOnScrollListener
+                    //用个开关来控制,防止互相调用导致扑街
+                    //也就是调用setSelection()这个方法避免调用setOnScrollListener
                     return;
-                }else if (mTabPosition!=firstVisibleItem){
+                }
+
+                if (firstVisibleItem > mTabPosition) {
+                    //下滑
+                    if (firstVisibleItem == totalItemCount - 2 && mTabPosition < titles.size()) {
+                        mTabPosition = titles.size() - 1;
+                        vt_left.setTabSelected(mTabPosition);
+                        return;
+                    } else {
+                        mTabPosition = firstVisibleItem;
+                        vt_left.setTabSelected(mTabPosition);
+                    }
+                }
+                if (firstVisibleItem < mTabPosition) {
+                    //上滑
                     mTabPosition = firstVisibleItem;
                     vt_left.setTabSelected(mTabPosition);
-                }*/
+                }
 
-                KLog.w("onScroll            " + firstVisibleItem + "      " + visibleItemCount + "   " + totalItemCount);
+                //                KLog.w("onScroll            " + firstVisibleItem + "      " + visibleItemCount + "   " + totalItemCount);
             }
         });
     }

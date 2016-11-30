@@ -57,14 +57,6 @@
             app:tab_height="50dp"
             app:tab_mode="scrollable"/>
 
-        <!--        <ListView
-                    android:id="@+id/lv_sort_gift_left"
-                    android:layout_width="90dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/default_background"
-                    android:divider="@null"
-                    android:scrollbars="none"/>-->
-
         <include
             layout="@layout/module_list"/>
 

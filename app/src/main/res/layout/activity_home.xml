@@ -51,7 +51,7 @@
             android:id="@+id/rb_my"
             style="@style/RadioButton.Home"
             android:drawableTop="@drawable/slct_home_rb_my"
-            android:text="@string/home_rb_text_sort"/>
+            android:text="@string/home_rb_text_my"/>
     </RadioGroup>
 
 </LinearLayout>
