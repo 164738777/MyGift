@@ -58,7 +58,7 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
         @NonNull
         @Override
         public AdapterItem createItem(Object o) {
-            return new JingXuanBigImageItem();
+            return new JingXuanBigImageItem(getContext());
         }
     };
 

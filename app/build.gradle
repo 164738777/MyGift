@@ -50,6 +50,9 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'cn.bingoogolapple:bga-banner:2.0.9@aar'
     compile "com.github.bumptech.glide:glide:${libs.glide}"
+    compile 'jp.wasabeef:glide-transformations:2.0.1'
+
+
 //    compile "com.github.VictorAlbertos.RxCache:core:${libs.rxCache}"
 
     //网络监听
