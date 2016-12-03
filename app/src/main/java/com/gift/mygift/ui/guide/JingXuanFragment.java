@@ -53,7 +53,9 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
     }
 
 
+    private List<SendGiftData> firstBannerList = new ArrayList<>();
     private MVCHelper<List<SendGiftData>> mvcHelper;
+
     private SuperListAdapter<SendGiftData> mAdapter = new SuperListAdapter<SendGiftData>() {
         @NonNull
         @Override
@@ -66,11 +68,9 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
         @NonNull
         @Override
         public AdapterItem createItem(Object o) {
-            return new JingXuanSecondBannerItem();
+            return new JingXuanSecondBannerItem(getContext());
         }
     };
-
-    private List<SendGiftData> firstBannerList = new ArrayList<>();
 
     @Override
     protected void initView(View view) {
@@ -105,6 +105,7 @@ public class JingXuanFragment extends ListWithUpAndDownFragment implements JingX
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rcv.setLayoutManager(manager);
         rcv.setBackgroundColor(ContextCompat.getColor(GiftApp.getInstance(), R.color.white));
+        rcv.setHasFixedSize(true);
         rcv.setAdapter(mSecondBannerAdapter);
 
 

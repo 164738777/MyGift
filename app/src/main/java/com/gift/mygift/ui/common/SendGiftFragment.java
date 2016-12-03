@@ -2,12 +2,15 @@ package com.gift.mygift.ui.common;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.gift.mygift.adapter.base.SuperRcvAdapter;
 import com.gift.mygift.adapter.common.SendGiftItem;
 import com.gift.mygift.entity.SendGiftData;
+import com.gift.mygift.listener.OnRcvItemTouchListener;
 import com.gift.mygift.network.datasource.SendGiftDS;
+import com.gift.mygift.tools.ToastTool;
 import com.gift.mygift.ui.base.RcvWithUpAndDownFragment;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCUltraHelper;
@@ -44,11 +47,25 @@ public class SendGiftFragment extends RcvWithUpAndDownFragment {
     @Override
     protected void initView(View view) {
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        rcv_list.setHasFixedSize(true);
         rcv_list.setLayoutManager(manager);
 
         mvcHelper = new MVCUltraHelper<>(rl_list);
         mvcHelper.setDataSource(new SendGiftDS(channelID));
         mvcHelper.setAdapter(mAdapter);
+        RecyclerView contentView = mvcHelper.getContentView();
+        contentView.addOnItemTouchListener(new OnRcvItemTouchListener(contentView) {
+            @Override
+            public void onItemClick(View view, int position) {
+                SendGiftData sendGiftData = mAdapter.getData().get(position);
+                ToastTool.show(getContext(),sendGiftData.id+"");
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+                ToastTool.show(getContext(),"onLongItemClick~~~~~~~~~");
+            }
+        });
         mvcHelper.refresh();
     }
 

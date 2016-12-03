@@ -1,6 +1,6 @@
 package com.gift.mygift.ui.sort.presenter;
 import com.gift.mygift.entity.SendGiftData;
-import com.gift.mygift.ui.base.OnLoadDataListListener;
+import com.gift.mygift.listener.OnLoadDataListListener;
 import com.gift.mygift.ui.sort.contract.SortGongLueContract;
 import com.gift.mygift.ui.sort.model.SortGongLueModelImpl;
 

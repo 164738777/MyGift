@@ -1,7 +1,7 @@
 package com.gift.mygift.ui.guide.contract;
 
 import com.gift.mygift.entity.SendGiftData;
-import com.gift.mygift.ui.base.OnLoadDataListListener;
+import com.gift.mygift.listener.OnLoadDataListListener;
 import com.gift.mygift.ui.guide.onGuideLoadDataListener;
 
 import java.util.List;

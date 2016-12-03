@@ -9,7 +9,7 @@ import com.gift.mygift.network.ApiResponse;
 import com.gift.mygift.network.NetWork;
 import com.gift.mygift.network.NetworkTransformer;
 import com.gift.mygift.network.subscriber.SilenceSubscriber;
-import com.gift.mygift.ui.base.OnLoadDataListListener;
+import com.gift.mygift.listener.OnLoadDataListListener;
 import com.gift.mygift.ui.guide.contract.JingXuanContract;
 import com.gift.mygift.ui.guide.onGuideLoadDataListener;
 

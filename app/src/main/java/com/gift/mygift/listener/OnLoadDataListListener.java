@@ -1,4 +1,4 @@
-package com.gift.mygift.ui.base;
+package com.gift.mygift.listener;
 
 /**
  * 作者:  qiang on 2016/11/24 18:30

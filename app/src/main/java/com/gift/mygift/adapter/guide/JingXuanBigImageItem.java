@@ -65,7 +65,7 @@ public class JingXuanBigImageItem extends BaseAdapterItem<SendGiftData> {
 
     @Override
     public void setViews() {
-        //        ImageTool.loadRoundBroadImage(iv_mask, null, 10);
+        ImageTool.loadRoundBroadImage(context, iv_bg, null, 45);
     }
 
     @Override
@@ -74,8 +74,7 @@ public class JingXuanBigImageItem extends BaseAdapterItem<SendGiftData> {
         switch (sendGiftData.type) {
             case Constants.RESPONSE_TYPE_POST:
                 tv_title.setVisibility(View.VISIBLE);
-                iv_mask.setVisibility(View.INVISIBLE);
-                //                iv_mask.setVisibility(View.VISIBLE);
+                                iv_mask.setVisibility(View.VISIBLE);
                 tv_title.setText(sendGiftData.title);
                 //                ImageTool.loadImage(iv_bg, sendGiftData.cover_image_url);
                 ImageTool.loadRoundBroadImage(context, iv_bg, sendGiftData.cover_image_url, 45);
