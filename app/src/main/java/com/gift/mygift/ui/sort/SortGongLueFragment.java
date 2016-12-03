@@ -81,6 +81,7 @@ public class SortGongLueFragment extends ListFragment implements SortGongLueCont
         rcv_zhuanTi = ButterKnife.findById(v, R.id.rcv_module_rcvlist);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rcv_zhuanTi.setLayoutManager(manager);
+        rcv_zhuanTi.setHasFixedSize(true);
         rcv_zhuanTi.setBackgroundColor(ContextCompat.getColor(GiftApp.getInstance(), R.color.white));
         rcv_zhuanTi.setAdapter(mZhuanTiAdapter);
         lv_list.addHeaderView(v);

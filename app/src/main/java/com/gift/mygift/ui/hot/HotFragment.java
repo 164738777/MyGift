@@ -2,12 +2,15 @@ package com.gift.mygift.ui.hot;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.gift.mygift.adapter.base.SuperRcvAdapter;
 import com.gift.mygift.adapter.hot.HotItem;
 import com.gift.mygift.entity.HotListBean;
+import com.gift.mygift.listener.OnRcvItemTouchListener;
 import com.gift.mygift.network.datasource.HotDS;
+import com.gift.mygift.tools.ToastTool;
 import com.gift.mygift.ui.base.RcvWithUpAndDownFragment;
 import com.shizhefei.mvc.MVCHelper;
 import com.shizhefei.mvc.MVCUltraHelper;
@@ -32,6 +35,9 @@ public class HotFragment extends RcvWithUpAndDownFragment {
             return new HotItem();
         }
     };
+    private RecyclerView contentView;
+    private OnRcvItemTouchListener listener;
+
 
     @Override
     protected void initView(View view) {
@@ -52,6 +58,20 @@ public class HotFragment extends RcvWithUpAndDownFragment {
         mvcHelper = new MVCUltraHelper<>(rl_list);
         mvcHelper.setDataSource(new HotDS());
         mvcHelper.setAdapter(mAdapter);
+        contentView = mvcHelper.getContentView();
+        listener = new OnRcvItemTouchListener(contentView) {
+            @Override
+            public void onItemClick(View view, int position) {
+                HotListBean hotListBean = mAdapter.getData().get(position);
+                ToastTool.show(getContext(), hotListBean.data.id + "");
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+                ToastTool.show(getContext(), "onLongItemClick~~~~~~~~~");
+            }
+        };
+        contentView.addOnItemTouchListener(listener);
         mvcHelper.refresh();
     }
 
@@ -62,6 +82,7 @@ public class HotFragment extends RcvWithUpAndDownFragment {
 
     @Override
     protected void preRelease() {
+        contentView.removeOnItemTouchListener(listener);
         mvcHelper.destory();
     }
 }

@@ -28,6 +28,8 @@ import kale.adapter.item.AdapterItem;
 public class SendGiftFragment extends RcvWithUpAndDownFragment {
 
     private int channelID;
+    private RecyclerView contentView;
+    private OnRcvItemTouchListener listener;
 
     public static SendGiftFragment newInstance(int channelID) {
         SendGiftFragment fragment = new SendGiftFragment();
@@ -53,19 +55,20 @@ public class SendGiftFragment extends RcvWithUpAndDownFragment {
         mvcHelper = new MVCUltraHelper<>(rl_list);
         mvcHelper.setDataSource(new SendGiftDS(channelID));
         mvcHelper.setAdapter(mAdapter);
-        RecyclerView contentView = mvcHelper.getContentView();
-        contentView.addOnItemTouchListener(new OnRcvItemTouchListener(contentView) {
+        contentView = mvcHelper.getContentView();
+        listener = new OnRcvItemTouchListener(contentView) {
             @Override
             public void onItemClick(View view, int position) {
                 SendGiftData sendGiftData = mAdapter.getData().get(position);
-                ToastTool.show(getContext(),sendGiftData.id+"");
+                ToastTool.show(getContext(), sendGiftData.id + "");
             }
 
             @Override
             public void onLongItemClick(View view, int position) {
-                ToastTool.show(getContext(),"onLongItemClick~~~~~~~~~");
+                ToastTool.show(getContext(), "onLongItemClick~~~~~~~~~");
             }
-        });
+        };
+        contentView.addOnItemTouchListener(listener);
         mvcHelper.refresh();
     }
 
@@ -76,6 +79,7 @@ public class SendGiftFragment extends RcvWithUpAndDownFragment {
 
     @Override
     protected void preRelease() {
+        contentView.removeOnItemTouchListener(listener);
         mvcHelper.destory();
     }
 }
