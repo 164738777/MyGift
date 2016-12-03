@@ -57,7 +57,7 @@ public class SortGongLueFragment extends ListFragment implements SortGongLueCont
         @NonNull
         @Override
         public AdapterItem createItem(Object o) {
-            return new SortGongLueZhuanTiItem();
+            return new SortGongLueZhuanTiItem(getContext());
         }
     };
 

@@ -42,7 +42,7 @@ public class SortGiftListItem extends BaseAdapterItem<SortGiftList> {
         @NonNull
         @Override
         public AdapterItem createItem(Object o) {
-            return new SortGiftListBeanItem();
+            return new SortGiftListBeanItem(context);
         }
     };
 

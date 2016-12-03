@@ -33,7 +33,7 @@ public class SortGongLueListItem extends BaseAdapterItem<SortGongLueList> {
         @NonNull
         @Override
         public AdapterItem createItem(Object o) {
-            return new SortGongLueListBeanItem();
+            return new SortGongLueListBeanItem(context);
         }
     };
 
